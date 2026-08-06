@@ -7,30 +7,29 @@
   Light-first; dark-mode tokens are stubbed below but unused by default.
 */
 @theme {
-  /* ---- Ocean-blue primary (brand) ---- */
-  --color-primary-50: #eef6fc;
-  --color-primary-100: #d6e9f7;
-  --color-primary-200: #aed3ef;
-  --color-primary-300: #79b5e2;
-  --color-primary-400: #4090d1;
-  --color-primary-500: #1f73b8;
-  --color-primary-600: #155e9c;
-  --color-primary-700: #124d80;
-  --color-primary-800: #103f68;
-  --color-primary-900: #0d3252;
-  --color-primary-950: #08213a;
+  /* Yonsei navy + circuit cyan */
+  --color-primary-50: #eef5fb;
+  --color-primary-100: #d9e8f5;
+  --color-primary-200: #b8d4eb;
+  --color-primary-300: #8ab9dc;
+  --color-primary-400: #5799c9;
+  --color-primary-500: #347cb3;
+  --color-primary-600: #236394;
+  --color-primary-700: #174e78;
+  --color-primary-800: #123f63;
+  --color-primary-900: #0b3150;
+  --color-primary-950: #051f36;
 
-  /* ---- Brain-motif pink / magenta accent ---- */
-  --color-accent-50: #fdeff8;
-  --color-accent-100: #fbdcef;
-  --color-accent-200: #f6b9df;
-  --color-accent-300: #ef8bc8;
-  --color-accent-400: #e65bad;
-  --color-accent-500: #d6409f;
-  --color-accent-600: #b92d85;
-  --color-accent-700: #97226b;
-  --color-accent-800: #7c1f59;
-  --color-accent-900: #681d4b;
+  --color-accent-50: #ebfdff;
+  --color-accent-100: #cdf8fd;
+  --color-accent-200: #9ceef8;
+  --color-accent-300: #62dce9;
+  --color-accent-400: #2bc1d2;
+  --color-accent-500: #139fb3;
+  --color-accent-600: #117f91;
+  --color-accent-700: #146775;
+  --color-accent-800: #16535f;
+  --color-accent-900: #174651;
 
   /* ---- Typography (loaded via @fontsource-variable in BaseLayout) ---- */
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,

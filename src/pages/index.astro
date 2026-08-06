@@ -1,250 +1,138 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../components/BaseLayout.astro";
-import { site } from "../data/site";
-import { getCollection } from "astro:content";
-import {
-  getConfirmedFigures,
-  getPublications,
-  featuredMatcher,
-  featuredSorter,
-} from "../lib/content";
 import PubList from "../components/PubList.astro";
-import labPhoto from "../assets/gallery/sample-1.jpg";
+import { site } from "../data/site";
+import { getPublications } from "../lib/content";
 
-const figures = await getConfirmedFigures();
-
-const people = await getCollection("people");
 const pubs = await getPublications();
-// Featured = mentee-led or PI first/senior (>=2019), prioritized mentee-led
-// first then most recent.
-const recent = pubs
-  .filter(featuredMatcher(people))
-  .sort(featuredSorter(people))
-  .slice(0, 5);
+const recent = pubs.slice(0, 5);
 
-// "From our work" strip: the most-prominent (lowest-order) figure from each of
-// the top three papers, so the strip showcases range rather than repeating one
-// article. Each figure carries its paper's title + journal as the caption.
-const pubById = new Map(pubs.map((p) => [p.id, p]));
-type StripItem = {
-  figure: (typeof figures)[number];
-  paper: (typeof pubs)[number] | undefined;
-};
-const strip: StripItem[] = [];
-const seenPapers = new Set<string>();
-for (const f of figures) {
-  const pid = f.data.paper.id;
-  if (seenPapers.has(pid)) continue;
-  seenPapers.add(pid);
-  strip.push({ figure: f, paper: pubById.get(pid) });
-  if (strip.length === 3) break;
-}
-
-// Homepage "Research areas" cards. Replace these with your lab's themes; each
-// `href` can deep-link into the Research page's grouped sections (e.g.
-// "/research#your-slug" once you set up the taxonomy in content.config.ts).
 const themes = [
   {
-    title: "Research area one",
-    href: "/research",
-    body: "A sentence describing this line of work and the questions it asks.",
+    title: "Next-Generation Display IC Systems",
+    href: "/research#display-ic",
+    body: "Scalable analog signal processing for TDDI, micro-LED, quantum-dot, and emerging display platforms.",
   },
   {
-    title: "Research area two",
-    href: "/research",
-    body: "A sentence describing this line of work and the questions it asks.",
+    title: "Energy-Efficient Sensor Interfaces",
+    href: "/research#sensor-interface",
+    body: "Low-power front ends and data converters for light, temperature, impedance, pressure, and other physical signals.",
   },
   {
-    title: "Research area three",
-    href: "/research",
-    body: "A sentence describing this line of work and the questions it asks.",
+    title: "Miniaturized Sensor Platforms",
+    href: "/research#sensor-platform",
+    body: "Highly integrated sensing nodes combining interfaces, memory, control, power, and clock generation.",
   },
   {
-    title: "Methods & open tools",
-    href: "/research",
-    body: "Shared resources, datasets, and reproducible pipelines from the lab.",
+    title: "Biomedical Circuits and Systems",
+    href: "/research#biomedical",
+    body: "High-density, ultra-low-power neural and bioimpedance interfaces for flexible and implantable devices.",
   },
+];
+
+const news = [
+  { date: "2026.07", text: "Chaemin joins SICSL at Yonsei. Welcome!" },
+  { date: "2026.04", text: "Yunseong joins SICSL at Yonsei. Welcome!" },
+  { date: "2026.03", text: "Our work on a noise-efficient in-vitro and in-vivo capacitive neural interface was accepted to IEEE Symposium on VLSI Technology and Circuits." },
+  { date: "2026.02", text: "Kyunghyun joins SICSL at Yonsei. Welcome!" },
+  { date: "2026.01", text: "Our collaborative work on analog in-memory computing was accepted to IEEE CICC." },
+  { date: "2026.01", text: "Ain joins SICSL at Yonsei. Welcome!" },
+  { date: "2025.11", text: "Our paper on energy-efficient and temperature-resilient sensor interfaces was accepted to IEEE OJSSCS." },
+  { date: "2025.08", text: "Suho joins SICSL at Yonsei. Welcome!" },
+  { date: "2025.05", text: "Sun-Woong joins SICSL at Yonsei. Welcome!" },
+  { date: "2025.03", text: "Jihoon joins SICSL at Yonsei. Welcome!" },
 ];
 ---
 
 <BaseLayout>
-  <!-- Hero -->
-  <section class="bg-gradient-to-b from-primary-50 to-white">
-    <div class="container-page py-16 sm:py-20">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="text-sm font-semibold tracking-wide text-accent-600 uppercase">
-          {site.institution} · {site.university}
-        </p>
-        <h1
-          class="mt-4 text-4xl leading-tight font-semibold text-slate-900 sm:text-5xl"
-        >
-          {site.name}
-        </h1>
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-600">{site.description}</p>
-        <div class="mt-8 flex flex-wrap justify-center gap-3">
-          <a
-            href="/research"
-            class="rounded-md bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
-            >Explore our research</a
-          >
-          <a
-            href="/people"
-            class="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
-            >Meet the team</a
-          >
-        </div>
+  <section class="relative overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-700 text-white">
+    <div class="absolute inset-0 opacity-20" aria-hidden="true">
+      <div class="absolute -top-32 right-0 h-80 w-80 rounded-full border border-accent-300"></div>
+      <div class="absolute top-28 -right-24 h-96 w-96 rounded-full border border-accent-300"></div>
+      <div class="absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-accent-400 blur-3xl"></div>
+    </div>
+    <div class="container-page relative py-20 sm:py-28">
+      <p class="text-sm font-semibold tracking-[0.2em] text-accent-200 uppercase">
+        {site.institution} · {site.university}
+      </p>
+      <h1 class="mt-5 max-w-4xl font-serif text-4xl leading-tight text-white sm:text-6xl">
+        Smart Interface IC<br class="hidden sm:block" /> and Systems Laboratory
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-primary-100 sm:text-xl">
+        {site.description}
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="/research" class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-primary-900 transition hover:bg-primary-50">Explore our research</a>
+        <a href="/people" class="rounded-md border border-primary-300 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Meet the team</a>
+        <a href="mailto:wjchoi11@yonsei.ac.kr" class="rounded-md border border-accent-300 px-5 py-3 text-sm font-semibold text-accent-100 transition hover:bg-accent-400/10">Join SICSL</a>
       </div>
-      {/* Want a custom illustrated hero? src/components/PipelineHero.astro is a
-          worked example (the Cohen Lab's bedside-to-bedside pipeline). Drop it in
-          here, or ask Claude to generate an SVG hero motif for your own field. */}
     </div>
   </section>
 
-  <!-- Featured figures strip -->
-  {
-    strip.length > 0 && (
-      <section class="border-y border-slate-200 bg-slate-50">
-        <div class="container-page py-14">
-          <div class="mb-7 flex items-end justify-between gap-4">
-            <div>
-              <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500" />
-              <h2 class="font-serif text-2xl text-slate-900">From our work</h2>
-            </div>
-            <a
-              href="/figures"
-              class="group inline-flex shrink-0 items-center gap-1 text-sm font-medium text-primary-700 transition-colors hover:text-accent-600"
-            >
-              All figures
-              <span
-                class="transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              >
-                &rarr;
-              </span>
-            </a>
-          </div>
-          <div class="grid gap-5 sm:grid-cols-3">
-            {strip.map(({ figure, paper }) => (
-              <a
-                href="/figures"
-                class="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-primary-300 hover:shadow-md"
-              >
-                <div class="overflow-hidden bg-slate-50">
-                  <Image
-                    src={figure.data.image}
-                    alt={figure.data.caption}
-                    widths={[400, 800]}
-                    sizes="(min-width: 640px) 30vw, 90vw"
-                    class="aspect-[4/3] w-full object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div class="flex flex-1 flex-col border-t border-slate-100 p-4">
-                  {paper && (
-                    <p class="text-xs font-medium text-slate-600">
-                      {paper.data.journal && <span>{paper.data.journal}</span>}
-                      {paper.data.journal && " · "}
-                      {paper.data.year}
-                    </p>
-                  )}
-                  <h3 class="mt-1 line-clamp-3 font-serif text-base leading-snug text-slate-900 group-hover:text-primary-700">
-                    {paper ? paper.data.title : figure.data.caption}
-                  </h3>
-                </div>
-              </a>
-            ))}
-          </div>
+  <section class="border-b border-slate-200 bg-primary-50">
+    <div class="container-page py-10">
+      <div class="grid gap-6 lg:grid-cols-[1fr_2fr] lg:items-start">
+        <div>
+          <p class="text-xs font-semibold tracking-widest text-accent-700 uppercase">Graduate student recruitment</p>
+          <h2 class="mt-2 font-serif text-2xl text-primary-950">We are looking for passionate researchers.</h2>
         </div>
-      </section>
-    )
-  }
+        <div class="space-y-3 text-sm leading-relaxed text-slate-700">
+          <p>연세대학교 스마트 인터페이스 IC 시스템 연구실에서는 디스플레이 IC 시스템, 센서 인터페이스, 데이터 컨버터(ADC/DAC), 지능형 바이오메디컬 시스템 및 브레인–머신 인터페이스 분야의 대학원생을 모집하고 있습니다.</p>
+          <p>관심 있는 학생은 이력서(CV), 자기소개서(희망 연구 분야 포함), 성적표를 <a href="mailto:wjchoi11@yonsei.ac.kr" class="font-medium text-primary-700 hover:underline">wjchoi11@yonsei.ac.kr</a>로 보내주시기 바랍니다. 연구 분야에 대한 간단한 문의도 환영합니다.</p>
+          <p class="flex flex-wrap gap-x-4 gap-y-1">
+            <a href="https://dis.yonsei.ac.kr/" target="_blank" rel="noopener noreferrer" class="font-medium text-primary-700 hover:underline">디스플레이융합공학과 →</a>
+            <a href="https://displai.yonsei.ac.kr/" target="_blank" rel="noopener noreferrer" class="font-medium text-primary-700 hover:underline">지능형디스플레이공학과 →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Research themes -->
   <section class="container-page py-16">
     <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
-    <h2 class="mb-8 font-serif text-2xl text-slate-900">Research areas</h2>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        themes.map((t) => (
-          <a
-            href={t.href}
-            class="group rounded-xl border border-slate-200 p-6 transition-colors hover:border-primary-300 hover:bg-primary-50/40"
-          >
-            <h3 class="font-serif text-xl text-slate-900 group-hover:text-primary-700">
-              {t.title}
-            </h3>
-            <p class="mt-2 text-sm text-slate-600">{t.body}</p>
-          </a>
-        ))
-      }
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <h2 class="font-serif text-3xl text-slate-900">Research areas</h2>
+      <a href="/research" class="text-sm font-medium text-primary-700 hover:text-accent-700">View all research →</a>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {themes.map((theme, index) => (
+        <a href={theme.href} class="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-primary-300 hover:shadow-md">
+          <span class="text-xs font-semibold tracking-widest text-accent-700">0{index + 1}</span>
+          <h3 class="mt-4 font-serif text-xl leading-snug text-slate-900 group-hover:text-primary-700">{theme.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">{theme.body}</p>
+        </a>
+      ))}
     </div>
   </section>
 
-  <!-- Recent featured publications -->
-  {
-    recent.length > 0 && (
-      <section class="border-t border-slate-200 bg-slate-50">
-        <div class="container-page py-16">
-          <div class="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500" />
-              <h2 class="font-serif text-2xl text-slate-900">Recent work</h2>
-            </div>
-            <a
-              href="/publications"
-              class="group inline-flex shrink-0 items-center gap-1 text-sm font-medium text-primary-700 transition-colors hover:text-accent-600"
-            >
-              All publications
-              <span
-                class="transition-transform group-hover:translate-x-0.5"
-                aria-hidden="true"
-              >
-                &rarr;
-              </span>
-            </a>
-          </div>
-          <PubList pubs={recent} />
-        </div>
-      </section>
-    )
-  }
+  <section class="border-y border-slate-200 bg-slate-50">
+    <div class="container-page grid gap-12 py-16 lg:grid-cols-[1fr_1.4fr]">
+      <div>
+        <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
+        <h2 class="font-serif text-3xl text-slate-900">News</h2>
+        <p class="mt-3 max-w-md text-slate-600">Recent publications, new members, and updates from SICSL.</p>
+      </div>
+      <ol class="divide-y divide-slate-200 border-t border-slate-300">
+        {news.map((item) => (
+          <li class="grid gap-2 py-4 sm:grid-cols-[5rem_1fr]">
+            <time class="text-sm font-semibold text-primary-700">{item.date}</time>
+            <p class="text-sm leading-relaxed text-slate-700">{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 
-  <!-- Life in the lab -->
-  <section class="border-t border-slate-200 bg-white">
-    <div class="container-page py-16">
-      <div class="grid items-center gap-10 lg:grid-cols-2">
+  {recent.length > 0 && (
+    <section class="container-page py-16">
+      <div class="mb-6 flex items-end justify-between gap-4">
         <div>
           <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
-          <h2 class="font-serif text-2xl text-slate-900">Life in the lab</h2>
-          <p class="mt-4 max-w-prose text-slate-600">
-            Science is a team sport. Beyond the bench, we celebrate milestones,
-            travel to conferences, and get out together. Add your own photos in
-            <code>src/content/gallery/</code>.
-          </p>
-          <a
-            href="/lab-life"
-            class="group mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary-700 transition-colors hover:text-accent-600"
-          >
-            Explore lab life
-            <span
-              class="transition-transform group-hover:translate-x-0.5"
-              aria-hidden="true">&rarr;</span
-            >
-          </a>
+          <h2 class="font-serif text-3xl text-slate-900">Recent publications</h2>
         </div>
-        <a
-          href="/lab-life"
-          class="group block overflow-hidden rounded-2xl border border-slate-200 shadow-sm"
-        >
-          <Image
-            src={labPhoto}
-            alt="Lab team photo"
-            widths={[600, 1000]}
-            sizes="(min-width: 1024px) 45vw, 90vw"
-            class="aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          />
-        </a>
+        <a href="/publications" class="text-sm font-medium text-primary-700 hover:text-accent-700">All publications →</a>
       </div>
-    </div>
-  </section>
+      <PubList pubs={recent} />
+    </section>
+  )}
 </BaseLayout>

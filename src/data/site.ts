@@ -1,11 +1,3 @@
-// Site-wide singletons (identity, contact, social, navigation).
-// Kept here rather than in a content collection so layout components can
-// import them directly.
-//
-// ⚙️  EDIT THIS FIRST: replace every placeholder below with your lab's details.
-//    (Tip: ask Claude to "fill in src/data/site.ts for my lab" and paste your
-//    name, institution, and a one-line mission.)
-
 export interface NavItem {
   label: string;
   href: string;
@@ -32,36 +24,33 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: "Example Laboratory",
-  shortName: "Example Lab",
-  pi: "Jane Doe, PhD",
-  institution: "Your Institution",
-  university: "Your University",
-  // Your production URL (used for canonical links + sitemap). Set your domain.
-  url: "https://example.com",
+  name: "Smart Interface IC and Systems Laboratory",
+  shortName: "SICSL @ YONSEI",
+  pi: "Woojun Choi, Ph.D.",
+  institution: "Department of Integrated Display Engineering",
+  university: "Yonsei University",
+  url: "https://sicsl-yonsei.github.io",
   description:
-    "One or two sentences describing what your lab studies and why it matters. " +
-    "This shows as the homepage lead and the default meta description.",
-  email: "lab@example.edu",
-  phone: "000-000-0000",
+    "We design high-performance analog and mixed-signal CMOS circuits for next-generation display IC systems, energy-efficient sensor interfaces, data converters, miniaturized sensor platforms, and intelligent biomedical systems.",
+  email: "wjchoi11@yonsei.ac.kr",
+  phone: "+82-2-2123-5829",
   address: [
-    "Example Laboratory",
-    "Your Department",
-    "123 University Way",
-    "City, ST 00000",
+    "Smart Interface IC and Systems Laboratory",
+    "Department of Integrated Display Engineering, Yonsei University",
+    "Room 150B-3, Engineering Research Park",
+    "50 Yonsei-ro, Seodaemun-gu, Seoul 03722, Republic of Korea",
   ],
-  mapQuery: "123 University Way, City, ST 00000",
+  mapQuery: "Yonsei University Engineering Research Park, Seoul, Korea",
   social: {
-    scholar: "https://scholar.google.com/citations?user=XXXXXXXX&hl=en",
-    // twitter: "https://twitter.com/yourhandle",
-    // github: "https://github.com/yourorg",
+    scholar: "https://scholar.google.com/citations?hl=en&user=jbET1VMAAAAJ&view_op=list_works&sortby=pubdate",
+    github: "https://github.com/sicsl-yonsei",
   },
   nav: [
     { label: "People", href: "/people" },
     { label: "Research", href: "/research" },
     { label: "Publications", href: "/publications" },
-    { label: "Figures", href: "/figures" },
-    { label: "Lab Life", href: "/lab-life" },
+    { label: "Invited Talks", href: "/invited-talks" },
+    { label: "Teaching", href: "/teaching" },
     { label: "Contact", href: "/contact" },
   ],
 };

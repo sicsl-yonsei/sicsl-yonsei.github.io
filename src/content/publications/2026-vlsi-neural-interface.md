@@ -1,0 +1,12 @@
+---
+title: "A 256-Channel, 32-Interconnect, 1.25-NEF, In Vitro and In Vivo Neural Interface with Auto-Calibrated Input Impedance Boosting and On-Chip Spike Detection for Flexible Capacitive Microelectrode Array"
+authors: ["Y. Chen", "S. Nam", "S. Byun", "P. Velcich", "S. Cho", "C. Lee", "J. Lee", "S. Weaver", "E. Brugnolotto", "E. Hwang", "D. Seo", "E. Lee", "K. Yu", "W. Choi", "T. Jang"]
+year: 2026
+journal: "IEEE Symposium on VLSI Technology and Circuits (VLSI), June 2026"
+isMenteePaper: true
+menteeFirstAuthor: false
+piFirstOrSenior: false
+featured: true
+openAccess: false
+areas: ["biomedical"]
+---
