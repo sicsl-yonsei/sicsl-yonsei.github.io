@@ -71,13 +71,14 @@ const publications = defineCollection({
     areas: z
       .array(
         z.enum([
-          "topic-one",
-          "topic-two",
-          "topic-three",
-          "methods",
-          "theory",
+          "display-ic",
+          "sensor-interface",
+          "sensor-platform",
+          "biomedical",
+          "frequency-reference",
+          "data-converter",
           "review",
-          "letter",
+          "book-chapter",
         ]),
       )
       .default([]),

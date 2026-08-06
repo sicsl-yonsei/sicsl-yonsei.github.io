@@ -11,48 +11,43 @@ export type Figure = CollectionEntry<"figures">;
 //    (and the matching enum in content.config.ts) with your field's topics.
 //    Keep `review`/`letter` if you want those publication-type facets.
 export type AreaSlug =
-  | "topic-one"
-  | "topic-two"
-  | "topic-three"
-  | "methods"
-  | "theory"
+  | "display-ic"
+  | "sensor-interface"
+  | "sensor-platform"
+  | "biomedical"
+  | "frequency-reference"
+  | "data-converter"
   | "review"
-  | "letter";
+  | "book-chapter";
 
 export const AREA_LABELS: Record<AreaSlug, string> = {
-  "topic-one": "Research topic one",
-  "topic-two": "Research topic two",
-  "topic-three": "Research topic three",
-  methods: "Methods & open tools",
-  theory: "Theory & modeling",
+  "display-ic": "Next-Generation Display IC Systems",
+  "sensor-interface": "Energy-Efficient Sensor Interfaces",
+  "sensor-platform": "Miniaturized Sensor Platforms",
+  biomedical: "Biomedical Circuits and Systems",
+  "frequency-reference": "Voltage and Frequency References",
+  "data-converter": "Data Converters and In-Memory Computing",
   review: "Review",
-  letter: "Letter / commentary",
+  "book-chapter": "Book Chapter",
 };
 
 // Research-page sections, grouped (topics vs. approaches), with blurbs.
 export const RESEARCH_GROUPS: { title: string; areas: { slug: AreaSlug; blurb: string }[] }[] = [
   {
-    title: "Research topics",
+    title: "Research Areas",
     areas: [
-      { slug: "topic-one", blurb: "A sentence describing this line of work and the questions it asks." },
-      { slug: "topic-two", blurb: "A sentence describing this line of work and the questions it asks." },
-      { slug: "topic-three", blurb: "A sentence describing this line of work and the questions it asks." },
-    ],
-  },
-  {
-    title: "Approaches",
-    areas: [
-      { slug: "methods", blurb: "Reproducible, open tooling and shared resources that make the lab's work possible." },
-      { slug: "theory", blurb: "Conceptual and computational frameworks that tie the lab's empirical work together." },
+      { slug: "display-ic", blurb: "Analog and mixed-signal circuits that enable scalable, high-frame-rate, and highly uniform next-generation displays, including TDDI, micro-LED, and quantum-dot systems." },
+      { slug: "sensor-interface", blurb: "Energy-efficient front-end amplifiers and data converters that translate physical signals such as light, temperature, impedance, pressure, and sound into robust digital information." },
+      { slug: "sensor-platform", blurb: "Highly integrated sensor systems combining interfaces, memory, microcontrollers, power management, and clock generation for miniaturized intelligent sensing nodes." },
+      { slug: "biomedical", blurb: "Ultra-low-power neural and bioimpedance interfaces that connect flexible microelectrode arrays and implantable sensors to high-density electronic readout systems." },
     ],
   },
 ];
 
 // Publications filter chips, grouped (slugs reference AREA_LABELS).
 export const FILTER_GROUPS: { title: string; slugs: AreaSlug[] }[] = [
-  { title: "Topic", slugs: ["topic-one", "topic-two", "topic-three"] },
-  { title: "Approach", slugs: ["methods", "theory"] },
-  { title: "Type", slugs: ["review", "letter"] },
+  { title: "Topic", slugs: ["display-ic", "sensor-interface", "sensor-platform", "biomedical", "frequency-reference", "data-converter"] },
+  { title: "Type", slugs: ["review", "book-chapter"] },
 ];
 
 /** Research-page groups → each area with its most-recent pubs (capped) + total count. */
@@ -181,7 +176,7 @@ export function publicationsForPerson(person: Person, pubs: Publication[]) {
 // the people listed here (typically the PI and senior faculty/collaborators).
 // Use each person's slug = their markdown filename without ".md".
 // ⚙️  CUSTOMIZE: list your PI (and any senior faculty) here.
-export const NON_MENTEE_SLUGS = new Set(["jane-doe"]);
+export const NON_MENTEE_SLUGS = new Set(["woojun-choi"]);
 
 /** Build an `isMentee(authorString)` predicate from the people collection. */
 export function menteeMatcher(people: Person[]) {
@@ -203,7 +198,7 @@ export function featuredMatcher(people: Person[]) {
   const isMentee = menteeMatcher(people);
   return (p: Publication) => {
     // Letters and reviews aren't "featured" primary research on the homepage.
-    if (p.data.areas.includes("letter") || p.data.areas.includes("review")) return false;
+    if (p.data.areas.includes("book-chapter") || p.data.areas.includes("review")) return false;
     return menteeLed(p, isMentee) || (p.data.piFirstOrSenior && p.data.year >= 2019);
   };
 }

@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const talks = [
+  { title: "A High-Density, Scalable Capacitive Neural Interface System Using 2-D Code-Division Multiplexing", venue: "The 33rd Korean Conference on Semiconductors", location: "Korea", date: "Jan. 2026" },
+  { title: "Analog – ISSCC 2024 Review Workshop", venue: "IEEE SSCS Seoul Chapter", location: "Korea", date: "May 2024" },
+  { title: "Energy-Efficient Analog Interfaces for Miniaturized Sensor Systems", venue: "Kyungpook National University (KNU)", location: "Korea", date: "Apr. 2024" },
+  { title: "Smart Interface Circuits for Miniaturized IoT Sensor Nodes", venue: "Korea Institute of Science and Technology (KIST)", location: "Korea", date: "Jan. 2024" },
+];
+---
+
+<BaseLayout title="Invited Talks" description="Invited talks by Prof. Woojun Choi.">
+  <PageHeader eyebrow="Academic activities" title="Invited Talks" lead="Selected invited lectures and review workshops on analog interfaces, sensor systems, and neural interfaces." />
+  <div class="container-page py-12">
+    <ol class="divide-y divide-slate-200 border-t border-slate-300">
+      {talks.map((talk) => (
+        <li class="grid gap-3 py-6 sm:grid-cols-[1fr_12rem]">
+          <div>
+            <h2 class="font-serif text-xl text-slate-900">{talk.title}</h2>
+            <p class="mt-2 text-sm text-slate-600">{talk.venue} · {talk.location}</p>
+          </div>
+          <p class="text-sm font-medium text-primary-700 sm:text-right">{talk.date}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</BaseLayout>

@@ -9,12 +9,12 @@ const groups = await getGroupedPeople();
 
 <BaseLayout
   title="People"
-  description="Faculty, researchers, and alumni of the lab."
+  description="Faculty and students of the Smart Interface IC and Systems Laboratory at Yonsei University."
 >
   <PageHeader
     eyebrow="The team"
     title="People"
-    lead="The faculty, researchers, and alumni who make up the lab."
+    lead="Meet the researchers building next-generation display, sensing, and biomedical interface circuits at Yonsei University."
   />
   <div class="container-page py-12">
     {groups.map((g) => <PersonGroup title={g.group} people={g.people} />)}

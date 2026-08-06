@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const yonsei = [
+  { term: "2026 Spring", courses: ["DIT-2050 Electronic Circuits", "DIT-1101 Display Engineering Basics", "IDE-5003 Display Driver IC"] },
+  { term: "2025 Fall", courses: ["DIT-2050 Electronic Circuits I", "DIT-5110 Analog Signal Processing Circuits Design"] },
+  { term: "2025 Spring", courses: ["DIT-2010 Basic Circuit Theory", "DIT-1101 Introduction to Display Engineering", "DIT-5109 Advanced Electronic Circuits"] },
+];
+
+const khu = [
+  { term: "2024 Fall", courses: ["EE365-01 Electronic Circuits II", "EE366-00 Electronic Circuits Laboratory"] },
+  { term: "2024 Spring", courses: ["EE202-00 Basic Circuit Analysis", "EE206-01 Electronic Circuits I"] },
+  { term: "2023 Fall", courses: ["EE365-03 Electronic Circuits II"] },
+];
+---
+
+<BaseLayout title="Teaching" description="Courses taught by Prof. Woojun Choi.">
+  <PageHeader eyebrow="Education" title="Teaching" lead="Courses in circuit theory, analog integrated circuits, electronic circuits, and display IC systems." />
+  <div class="container-page space-y-14 py-12">
+    <section>
+      <h2 class="font-serif text-2xl text-slate-900">Yonsei University</h2>
+      <div class="mt-5 grid gap-5 md:grid-cols-3">
+        {yonsei.map((semester) => (
+          <article class="rounded-xl border border-slate-200 p-5">
+            <h3 class="text-sm font-semibold text-primary-700">{semester.term}</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              {semester.courses.map((course) => <li>{course}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section>
+      <h2 class="font-serif text-2xl text-slate-900">Kyung Hee University <span class="text-base font-normal text-slate-500">(2023.09–2025.02)</span></h2>
+      <div class="mt-5 grid gap-5 md:grid-cols-3">
+        {khu.map((semester) => (
+          <article class="rounded-xl border border-slate-200 p-5">
+            <h3 class="text-sm font-semibold text-primary-700">{semester.term}</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              {semester.courses.map((course) => <li>{course}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
