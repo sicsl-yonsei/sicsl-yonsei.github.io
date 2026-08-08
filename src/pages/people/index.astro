@@ -15,6 +15,8 @@ const groups = await getGroupedPeople();
     eyebrow="SICSL"
     title="People"
     lead="Faculty and students of the Smart Interface IC and Systems Laboratory at Yonsei University."
+    compact
+    wide
   />
   <div class="container-page py-12">
     {groups.map((g) => <PersonGroup title={g.group} people={g.people} />)}

@@ -3,12 +3,26 @@ interface Props {
   eyebrow?: string;
   title: string;
   lead?: string;
+  compact?: boolean;
+  wide?: boolean;
 }
-const { eyebrow, title, lead } = Astro.props;
+
+const {
+  eyebrow,
+  title,
+  lead,
+  compact = false,
+  wide = false,
+} = Astro.props;
 ---
 
 <header class="bg-gradient-to-b from-primary-50 to-white">
-  <div class="container-page py-14 sm:py-20">
+  <div
+    class:list={[
+      "container-page",
+      compact ? "py-8 sm:py-12" : "py-14 sm:py-20",
+    ]}
+  >
     {
       eyebrow && (
         <p class="text-sm font-semibold tracking-wide text-accent-600 uppercase">
@@ -20,6 +34,17 @@ const { eyebrow, title, lead } = Astro.props;
       class:list={["h-0.5 w-12 rounded-full bg-accent-500", eyebrow ? "mt-4" : ""]}
     />
     <h1 class="mt-4 text-4xl font-semibold text-slate-900 sm:text-5xl">{title}</h1>
-    {lead && <p class="mt-5 max-w-2xl text-lg text-slate-600">{lead}</p>}
+    {
+      lead && (
+        <p
+          class:list={[
+            "mt-5 text-lg text-slate-600",
+            wide ? "max-w-4xl" : "max-w-2xl",
+          ]}
+        >
+          {lead}
+        </p>
+      )
+    }
   </div>
 </header>
