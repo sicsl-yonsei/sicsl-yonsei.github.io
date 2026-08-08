@@ -3,7 +3,7 @@
 /*
   Brand theme — Tailwind v4, CSS-first (@theme).
   ⚙️  CUSTOMIZE your palette here. Example: an ocean-blue primary + a
-  magenta-pink accent, with serif (Newsreader) headings and Inter body.
+  magenta-pink accent, with Inter used consistently throughout the site.
   Light-first; dark-mode tokens are stubbed below but unused by default.
 */
 @theme {
@@ -34,8 +34,8 @@
   /* ---- Typography (loaded via @fontsource-variable in BaseLayout) ---- */
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Newsreader Variable", ui-serif, Georgia, Cambria,
-    "Times New Roman", serif;
+  --font-serif: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 @layer base {
