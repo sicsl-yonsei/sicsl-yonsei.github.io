@@ -4,6 +4,7 @@ status: current
 group: Faculty
 role: "Principal Investigator"
 title: "Assistant Professor, Department of Integrated Display Engineering"
+headshot: "../../assets/people/woojun-choi.webp"
 links:
   email: wjchoi11@yonsei.ac.kr
   scholar: https://scholar.google.com/citations?hl=en&user=jbET1VMAAAAJ&view_op=list_works&sortby=pubdate

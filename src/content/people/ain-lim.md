@@ -4,6 +4,7 @@ status: current
 group: Students
 role: "Ph.D. Candidate"
 title: "Since September 2026"
+headshot: "../../assets/people/ain-lim.webp"
 links: {}
 order: 60
 featured: true
