@@ -45,31 +45,31 @@ const news = [
 ---
 
 <BaseLayout>
-  <section class="relative overflow-hidden bg-gradient-to-br from-primary-950 via-primary-900 to-primary-700 text-white">
-    <div class="absolute inset-0 opacity-20" aria-hidden="true">
-      <div class="absolute -top-32 right-0 h-80 w-80 rounded-full border border-accent-300"></div>
-      <div class="absolute top-28 -right-24 h-96 w-96 rounded-full border border-accent-300"></div>
-      <div class="absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-accent-400 blur-3xl"></div>
+  <section class="relative overflow-hidden border-b border-slate-200 bg-white">
+    <div class="absolute inset-0 opacity-60" aria-hidden="true">
+      <div class="absolute -top-32 right-0 h-80 w-80 rounded-full border border-primary-100"></div>
+      <div class="absolute top-28 -right-24 h-96 w-96 rounded-full border border-accent-100"></div>
+      <div class="absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-accent-50 blur-3xl"></div>
     </div>
     <div class="container-page relative py-12 sm:py-16">
-      <p class="text-sm font-semibold tracking-[0.2em] text-accent-200 uppercase">
+      <p class="text-sm font-semibold tracking-[0.2em] text-accent-700 uppercase">
         {site.institution} · {site.university}
       </p>
-      <h1 class="mt-5 max-w-4xl font-serif text-4xl leading-tight text-white sm:text-6xl">
+      <h1 class="mt-5 max-w-5xl font-serif text-4xl leading-tight text-primary-950 sm:text-6xl">
         Smart Interface IC<br class="hidden sm:block" /> and Systems Laboratory
       </h1>
-      <p class="mt-6 max-w-5xl text-lg leading-relaxed text-primary-100 sm:text-xl">
+      <p class="mt-6 max-w-5xl text-lg leading-relaxed text-slate-600 sm:text-xl">
         {site.description}
       </p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a href="/research" class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-primary-900 transition hover:bg-primary-50">Explore our research</a>
-        <a href="/people" class="rounded-md border border-primary-300 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">Meet the team</a>
-        <a href="mailto:wjchoi11@yonsei.ac.kr" class="rounded-md border border-accent-300 px-5 py-3 text-sm font-semibold text-accent-100 transition hover:bg-accent-400/10">Join SICSL</a>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="/research" class="rounded-md bg-primary-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-800">Explore our research</a>
+        <a href="/people" class="rounded-md border border-primary-300 px-5 py-3 text-sm font-semibold text-primary-800 transition hover:bg-primary-50">Meet the team</a>
+        <a href="mailto:wjchoi11@yonsei.ac.kr" class="rounded-md border border-accent-400 px-5 py-3 text-sm font-semibold text-accent-700 transition hover:bg-accent-50">Join SICSL</a>
       </div>
     </div>
   </section>
 
-  <section class="border-b border-slate-200 bg-primary-50">
+  <section class="border-b border-slate-200 bg-white">
     <div class="container-page py-10">
       <div class="grid gap-6 lg:grid-cols-[1fr_2fr] lg:items-start">
         <div>
@@ -105,7 +105,7 @@ const news = [
     </div>
   </section>
 
-  <section class="border-y border-slate-200 bg-slate-50">
+  <section class="border-y border-slate-200 bg-white">
     <div class="container-page grid gap-12 py-16 lg:grid-cols-[1fr_1.4fr]">
       <div>
         <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
