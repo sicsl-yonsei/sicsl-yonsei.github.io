@@ -116,7 +116,8 @@ const news = [
         {news.map((item) => (
           <li class="grid gap-2 py-4 sm:grid-cols-[5rem_1fr]">
             <time class="text-sm font-semibold text-primary-700">{item.date}</time>
-            <p class="text-sm leading-relaxed text-slate-700">{item.text}</p>
+#            <p class="text-sm leading-relaxed text-slate-700">{item.text}</p>
+            <p class:list={["text-sm leading-relaxed",item.color ?? "text-slate-700",]}>{item.text}</p>
           </li>
         ))}
       </ol>
