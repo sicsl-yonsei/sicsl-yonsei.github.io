@@ -164,15 +164,20 @@ export function personKey(name: string): PersonKey {
   };
 }
 
-/** Does a CV-style author string ("Miller GN", "Ortega-Marquez J") name this person? */
+/**
+ * Does a publication author string name this person?
+ * Supports both "W. Choi" / "S.-H. Cho" and CV-style "Choi W" order.
+ */
 export function authorIsPerson(author: string, pk: PersonKey): boolean {
   if (!pk.last) return false;
-  const m = author.trim().match(/^(.*?)\s+([A-Za-z]{1,4})$/);
-  const wholeLast = normAlpha(m ? m[1] : author);
-  const initials = m ? m[2].toLowerCase() : "";
-  const lastOk = wholeLast.includes(pk.last);
-  const initialOk = !pk.initial || !initials || initials[0] === pk.initial;
-  return lastOk && initialOk;
+  const tokens = author.trim().split(/\s+/).map(normAlpha).filter(Boolean);
+  if (tokens.length < 2) return false;
+
+  const first = tokens[0];
+  const last = tokens[tokens.length - 1];
+  const initialFirst = last === pk.last && (!pk.initial || first[0] === pk.initial);
+  const surnameFirst = first === pk.last && (!pk.initial || last[0] === pk.initial);
+  return initialFirst || surnameFirst;
 }
 
 /** Publications authored by a person, newest-first (best-effort name match). */
