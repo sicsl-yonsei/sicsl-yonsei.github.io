@@ -4,6 +4,7 @@ authors: ["W. Choi", "Y. Chen", "D. Kim", "S. Weaver", "T. Schlotter", "C. Livan
 equalContributionAuthors: ["W. Choi", "Y. Chen", "D. Kim"]
 contributionNote: "Co-first authorship"
 year: 2023
+publicationDate: "2023-06"
 journal: "IEEE Symposium on VLSI Technology and Circuits (VLSI), June 2023"
 piFirstOrSenior: true
 featured: true

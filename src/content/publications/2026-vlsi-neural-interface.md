@@ -4,6 +4,7 @@ authors: ["Y. Chen", "S. Nam", "S. Byun", "P. Velcich", "S. Cho", "C. Lee", "J. 
 equalContributionAuthors: ["Y. Chen", "S. Nam", "S. Byun"]
 contributionNote: "Equal contribution authorship"
 year: 2026
+publicationDate: "2026-06"
 journal: "IEEE Symposium on VLSI Technology and Circuits (VLSI), June 2026"
 isMenteePaper: true
 menteeFirstAuthor: false

@@ -42,9 +42,11 @@ const groups = await getResearchGroups(4);
                   )}
                 </div>
                 <p class="mt-2 max-w-3xl text-slate-600">{area.blurb}</p>
-                <div class="mt-4">
-                  <PubList pubs={area.pubs} />
-                </div>
+                {area.pubs.length > 0 && (
+                  <div class="mt-4">
+                    <PubList pubs={area.pubs} />
+                  </div>
+                )}
               </div>
             ))}
           </div>

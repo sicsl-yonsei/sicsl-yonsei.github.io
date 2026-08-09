@@ -4,6 +4,7 @@ authors: ["C. Livanelioglu", "W. Choi", "D. Kim", "J. Liao", "R. Incandela", "G.
 equalContributionAuthors: ["C. Livanelioglu", "W. Choi"]
 contributionNote: "Co-first authorship"
 year: 2022
+publicationDate: "2022-06"
 journal: "IEEE Symposium on VLSI Technology and Circuits, pp. 62–63, June 2022"
 piFirstOrSenior: false
 featured: true

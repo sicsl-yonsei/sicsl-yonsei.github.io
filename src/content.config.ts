@@ -49,10 +49,12 @@ const publications = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/publications" }),
   schema: z.object({
     title: z.string(),
-      authors: z.array(z.string()),
-      equalContributionAuthors: z.array(z.string()).default([]),
-      contributionNote: z.string().optional(),
-      year: z.number(),
+    authors: z.array(z.string()),
+    equalContributionAuthors: z.array(z.string()).default([]),
+    contributionNote: z.string().optional(),
+    year: z.number(),
+    // YYYY-MM publication month, used to order papers within each year.
+    publicationDate: z.string().regex(/^\d{4}-\d{2}$/).optional(),
     journal: z.string().optional(),
     doi: z.string().optional(),
     pmid: z.string().optional(),

@@ -68,9 +68,8 @@ export async function getResearchGroups(limit = 4) {
       .map((a) => {
         const all = pubs.filter((p) => p.data.areas.includes(a.slug));
         return { slug: a.slug, label: AREA_LABELS[a.slug], blurb: a.blurb, pubs: all.slice(0, limit), total: all.length };
-      })
-      .filter((a) => a.total > 0),
-  })).filter((g) => g.areas.length > 0);
+      }),
+  }));
 }
 
 /** Count of publications per area slug (for filter-chip labels). */
@@ -106,7 +105,12 @@ export async function getGroupedPeople() {
 export async function getPublications() {
   const pubs = await getCollection("publications");
   return pubs.sort(
-    (a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title),
+    (a, b) =>
+      b.data.year - a.data.year ||
+      (b.data.publicationDate ?? `${b.data.year}-00`).localeCompare(
+        a.data.publicationDate ?? `${a.data.year}-00`,
+      ) ||
+      a.data.title.localeCompare(b.data.title),
   );
 }
 

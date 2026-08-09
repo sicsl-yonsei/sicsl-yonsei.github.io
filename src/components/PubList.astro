@@ -60,6 +60,8 @@ const venueBadge = (venue = "") => {
   if (acronym) return acronym;
   if (/bioRxiv/i.test(venue)) return "bioRxiv";
   if (/Journal of Solid-State Circuits/i.test(venue)) return "JSSC";
+  if (/Transactions on Circuits and Systems I/i.test(venue)) return "TCAS-I";
+  if (/Transactions on Circuits and Systems II/i.test(venue)) return "TCAS-II";
   if (/Solid-State Circuits Letters/i.test(venue)) return "L-SSC";
   if (/Open Journal of Solid-State Circuits/i.test(venue)) return "OJSSCS";
   if (/Springer/i.test(venue)) return "Springer";
@@ -74,6 +76,14 @@ const conferenceTier = (venue = "") => {
       venue,
     )
   )
+    return "Major";
+  return "";
+};
+
+const journalTier = (venue = "") => {
+  if (/\bJSSC\b|Journal of Solid-State Circuits|\bTCAS[-– ]?I\b|Transactions on Circuits and Systems I(?!I)/i.test(venue))
+    return "Top-tier";
+  if (/\bTCAS[-– ]?II\b|Transactions on Circuits and Systems II/i.test(venue))
     return "Major";
   return "";
 };
@@ -95,7 +105,12 @@ const conferenceTier = (venue = "") => {
       const labPeople = labPeopleFor(p);
       const kind = publicationKind(p);
       const venue = venueBadge(d.journal);
-      const tier = kind === "conference" ? conferenceTier(d.journal) : "";
+      const tier =
+        kind === "conference"
+          ? conferenceTier(d.journal)
+          : kind === "journal"
+            ? journalTier(d.journal)
+            : "";
       return (
         <li
           class="py-5"
