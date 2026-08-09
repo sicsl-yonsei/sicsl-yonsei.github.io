@@ -33,13 +33,6 @@ const chip =
 const kindTab =
   "shrink-0 border-b-2 border-transparent px-1 pb-3 text-sm font-semibold text-slate-500 transition-colors hover:border-primary-200 hover:text-primary-700 data-[active]:border-primary-700 data-[active]:text-primary-800";
 
-const filters = [
-  { key: "all", label: "All" },
-  { key: "mentee", label: "Mentee-led" },
-  { key: "pi", label: "PI first/senior" },
-  { key: "collaboration", label: "Collaboration" },
-  { key: "openaccess", label: "Open access" },
-];
 ---
 
 <BaseLayout
@@ -88,16 +81,6 @@ const filters = [
 
       <div id="pub-filters" class="hidden space-y-3 md:block">
         <div class="flex flex-wrap items-center gap-2">
-          {
-            filters.map((f) => (
-              <button class={chip} data-filter={f.key} data-active={f.key === "all" ? "" : undefined}>
-                {f.label} <span data-count />
-              </button>
-            ))
-          }
-        </div>
-
-        <div class="flex flex-wrap items-center gap-2">
           <span class="mr-1 text-xs font-semibold tracking-wide text-slate-500 uppercase">Area</span>
         <button class={chip} data-area="all" data-active>All areas</button>
         {
@@ -118,11 +101,6 @@ const filters = [
           placeholder="Search title or author…"
           class="min-w-56 flex-1 rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-primary-500 focus:outline-none"
         />
-        <div class="flex items-center gap-2 text-sm text-slate-600">
-          <span>Sort</span>
-          <button class={chip} data-sort="date" data-active>Newest</button>
-          <button class={chip} data-sort="citations">Most cited</button>
-        </div>
         <span id="pub-count" class="text-sm text-slate-600"></span>
       </div>
     </div>
@@ -139,6 +117,9 @@ const filters = [
     const items = list
       ? ([...list.querySelectorAll<HTMLElement>("[data-pub]")] as HTMLElement[])
       : [];
+    const yearGroups = list
+      ? ([...list.querySelectorAll<HTMLElement>("[data-year-group]")] as HTMLElement[])
+      : [];
     const search = document.getElementById("pub-search") as HTMLInputElement | null;
     const countEl = document.getElementById("pub-count");
     const emptyEl = document.getElementById("pub-empty");
@@ -151,56 +132,27 @@ const filters = [
       filtersPanel?.classList.toggle("hidden");
     });
 
-    const filterBtns = [...document.querySelectorAll<HTMLElement>("[data-filter]")];
     const kindBtns = [...document.querySelectorAll<HTMLElement>("[data-kind-filter]")];
     const areaBtns = [...document.querySelectorAll<HTMLElement>("[data-area]")];
-    const sortBtns = [...document.querySelectorAll<HTMLElement>("[data-sort]")];
-
-    // role filter key -> the li dataset flag it tests ("all" tests nothing)
-    const FLAG: Record<string, string> = {
-      mentee: "mentee",
-      pi: "piSenior",
-      collaboration: "collaboration",
-      openaccess: "openaccess",
-    };
-    let filter = "all";
     let kind = "all";
     let area = "all";
-    let sort = "date";
-
-    const num = (li: HTMLElement, k: string) => Number(li.dataset[k] ?? 0);
-
-    function fillCounts() {
-      for (const b of filterBtns) {
-        const f = b.dataset.filter!;
-        const c =
-          f === "all" ? items.length : items.filter((li) => li.dataset[FLAG[f]] === "true").length;
-        const span = b.querySelector("[data-count]");
-        if (span) span.textContent = `(${c})`;
-      }
-    }
-
-    function applySort() {
-      if (!list) return;
-      const arr = [...items].sort((a, b) =>
-        sort === "citations"
-          ? num(b, "citations") - num(a, "citations") || num(b, "year") - num(a, "year")
-          : num(b, "year") - num(a, "year"),
-      );
-      for (const li of arr) list.appendChild(li);
-    }
 
     function applyFilter() {
       const q = (search?.value ?? "").trim().toLowerCase();
       let n = 0;
       for (const li of items) {
-        const okFilter = filter === "all" || li.dataset[FLAG[filter]] === "true";
         const okKind = kind === "all" || li.dataset.kind === kind;
         const okArea = area === "all" || (li.dataset.areas ?? "").split(" ").includes(area);
         const okSearch = !q || (li.dataset.search ?? "").includes(q);
-        const show = okFilter && okKind && okArea && okSearch;
+        const show = okKind && okArea && okSearch;
         li.hidden = !show;
         if (show) n++;
+      }
+      for (const group of yearGroups) {
+        const visible = [...group.querySelectorAll<HTMLElement>("[data-pub]")].some(
+          (li) => !li.hidden,
+        );
+        group.hidden = !visible;
       }
       if (countEl) countEl.textContent = `${n} of ${items.length}`;
       if (emptyEl) emptyEl.classList.toggle("hidden", n !== 0);
@@ -213,12 +165,6 @@ const filters = [
       }
     };
 
-    for (const b of filterBtns)
-      b.addEventListener("click", () => {
-        filter = b.dataset.filter ?? "all";
-        setActive(filterBtns, b);
-        applyFilter();
-      });
     for (const b of kindBtns)
       b.addEventListener("click", () => {
         kind = b.dataset.kindFilter ?? "all";
@@ -232,12 +178,6 @@ const filters = [
         area = b.dataset.area ?? "all";
         setActive(areaBtns, b);
         applyFilter();
-      });
-    for (const b of sortBtns)
-      b.addEventListener("click", () => {
-        sort = b.dataset.sort ?? "date";
-        setActive(sortBtns, b);
-        applySort();
       });
     search?.addEventListener("input", applyFilter);
 
@@ -253,8 +193,6 @@ const filters = [
       }
     }
 
-    fillCounts();
-    applySort();
     applyFilter();
   </script>
 </BaseLayout>

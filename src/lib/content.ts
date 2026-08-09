@@ -183,7 +183,12 @@ export function authorIsPerson(author: string, pk: PersonKey): boolean {
 /** Publications authored by a person, newest-first (best-effort name match). */
 export function publicationsForPerson(person: Person, pubs: Publication[]) {
   const pk = personKey(person.data.name);
-  return pubs.filter((p) => p.data.authors.some((a) => authorIsPerson(a, pk)));
+  const isPi = person.id === "woojun-choi";
+  return pubs.filter(
+    (p) =>
+      (isPi || p.data.year >= 2026) &&
+      p.data.authors.some((a) => authorIsPerson(a, pk)),
+  );
 }
 
 // Everyone profiled is treated as a "mentee" for the publication badges EXCEPT
@@ -195,14 +200,17 @@ export const NON_MENTEE_SLUGS = new Set(["woojun-choi"]);
 /** Build an `isMentee(authorString)` predicate from the people collection. */
 export function menteeMatcher(people: Person[]) {
   const dir = people.map((p) => ({ slug: p.id, key: personKey(p.data.name) }));
-  return (author: string) => {
+  return (author: string, year = Number.POSITIVE_INFINITY) => {
+    if (year < 2026) return false;
     const d = dir.find((x) => authorIsPerson(author, x.key));
     return !!d && !NON_MENTEE_SLUGS.has(d.slug);
   };
 }
 
-const menteeLed = (p: Publication, isMentee: (a: string) => boolean) =>
-  isMentee(p.data.authors[0] ?? "");
+const menteeLed = (
+  p: Publication,
+  isMentee: (a: string, year?: number) => boolean,
+) => isMentee(p.data.authors[0] ?? "", p.data.year);
 
 /**
  * Featured predicate: a mentee-led paper, or a PI first/senior paper from
