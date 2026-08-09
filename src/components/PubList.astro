@@ -83,7 +83,11 @@ const conferenceTier = (venue = "") => {
 const journalTier = (venue = "") => {
   if (/\bJSSC\b|Journal of Solid-State Circuits|\bTCAS[-– ]?I\b|Transactions on Circuits and Systems I(?!I)/i.test(venue))
     return "Top-tier";
-  if (/\bTCAS[-– ]?II\b|Transactions on Circuits and Systems II/i.test(venue))
+  if (
+    /\bTCAS[-– ]?II\b|Transactions on Circuits and Systems II|\bL[-– ]?SSC\b|Solid-State Circuits Letters/i.test(
+      venue,
+    )
+  )
     return "Major";
   return "";
 };
