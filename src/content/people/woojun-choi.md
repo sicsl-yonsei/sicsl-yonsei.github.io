@@ -14,23 +14,34 @@ featured: true
 
 Prof. Woojun Choi leads the Smart Interface IC and Systems Laboratory at Yonsei University. His research focuses on high-performance analog and mixed-signal CMOS circuits for display IC systems, energy-efficient sensor interfaces, data converters, miniaturized sensor platforms, and intelligent biomedical systems.
 
+## Contact Information
+
+**Assistant Professor**, Department of Integrated Display Engineering  
+**Yonsei University**, Seoul, Korea  
+IEEE Member
+
+- **Office:** +82-2-2123-5829 (Room 150B-3, Engineering Research Park)
+- **Email:** [wjchoi11@yonsei.ac.kr](mailto:wjchoi11@yonsei.ac.kr)
+
 ## Experience
 
-- Assistant Professor, Department of Integrated Display Engineering, Yonsei University, Korea (2025.03–Present)
-- Assistant Professor, Department of Electronic Engineering, Kyung Hee University, Korea (2023.09–2025.02)
-- Postdoctoral Researcher, Department of Information Technology and Electrical Engineering, ETH Zürich, Switzerland (2021.08–2023.08), advised by Prof. Taekwang Jang
-- Postdoctoral Researcher, Department of Electrical and Electronic Engineering, Yonsei University, Korea (2021.03–2021.07)
-- Visiting Scholar, Delft University of Technology, The Netherlands (2018.05–2018.08)
+- Assistant Professor, Department of Integrated Display Engineering, **Yonsei University**, Korea (2025.03–Present)
+- Assistant Professor, Department of Electronic Engineering, **Kyung Hee University**, Korea (2023.09–2025.02)
+- Postdoctoral Researcher, Department of Information Technology and Electrical Engineering, **ETH Zürich**, Switzerland (2021.08–2023.08)
+  - Advisor: [Prof. Taekwang Jang](https://circuit.ee.ethz.ch/people/prof_taekwang-jang.html)
+- Postdoctoral Researcher, Department of Electrical and Electronic Engineering, **Yonsei University**, Korea (2021.03–2021.07)
+- Visiting Scholar, Department of Electrical Engineering, Mathematics and Computer Science, **Delft University of Technology**, The Netherlands (2018.05–2018.08)
 
 ## Education
 
-- Ph.D. in Electrical and Electronic Engineering, Yonsei University (2015.03–2021.02), advised by Prof. Youngcheol Chae
-- B.S. in Electrical and Electronic Engineering, Yonsei University (2011.03–2015.02)
+- Ph.D. in Electrical and Electronic Engineering, **Yonsei University**, Seoul, Korea (2015.03–2021.02)
+  - Advisor: [Prof. Youngcheol Chae](https://sites.google.com/site/ymsicl/pi)
+- B.S. in Electrical and Electronic Engineering, **Yonsei University**, Seoul, Korea (2011.03–2015.02)
 
 ## Honors and Awards
 
-- Postdoctoral Fellowship, National Research Foundation of Korea (2022.09–2023.08)
-- ISSCC 2021 Takuo Sugano Award for Outstanding Far-East Paper (2021)
-- IEEE SSCS Predoctoral Achievement Award (2019)
-- Best Patent Award, Silver Prize, SK Hynix (2017)
-- Global Ph.D. Fellowship, National Research Foundation of Korea (2016.03–2021.02)
+- Postdoctoral Fellowship, National Research Foundation of Korea (NRF) (2022.09–2023.08)
+- International Solid-State Circuits Conference (ISSCC) 2021 Takuo Sugano Award for Outstanding Far-East Paper, IEEE ISSCC (2021.02) <span class="award-highlight">The Best ISSCC Paper Award for the Far-East Region</span>
+- Solid-State Circuits Society (SSCS) Predoctoral Achievement Award, IEEE SSCS (2019.02)
+- Best Patent Award (Silver Prize), SK Hynix (2017)
+- Global Ph.D. Fellowship, NRF (2016.03–2021.02)

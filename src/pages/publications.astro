@@ -2,14 +2,36 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import PubList from "../components/PubList.astro";
-import { getPublications, getAreaCounts, AREA_LABELS, FILTER_GROUPS } from "../lib/content";
+import {
+  getPublications,
+  getAreaCounts,
+  AREA_LABELS,
+  FILTER_GROUPS,
+  publicationKind,
+} from "../lib/content";
 
 const pubs = await getPublications();
 const areaCounts = await getAreaCounts();
 const areaChips = FILTER_GROUPS.flatMap((g) => g.slugs);
 
+const kindTabs = [
+  { key: "all", label: "All Publications" },
+  { key: "journal", label: "Journal Papers" },
+  { key: "conference", label: "Conference Papers" },
+  { key: "book", label: "Book Chapters" },
+];
+const kindCounts = Object.fromEntries(
+  kindTabs.map(({ key }) => [
+    key,
+    key === "all" ? pubs.length : pubs.filter((p) => publicationKind(p) === key).length,
+  ]),
+);
+
 const chip =
   "rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 data-[active]:border-primary-600 data-[active]:bg-primary-600 data-[active]:text-white";
+
+const kindTab =
+  "shrink-0 border-b-2 border-transparent px-1 pb-3 text-sm font-semibold text-slate-500 transition-colors hover:border-primary-200 hover:text-primary-700 data-[active]:border-primary-700 data-[active]:text-primary-800";
 
 const filters = [
   { key: "all", label: "All" },
@@ -30,6 +52,26 @@ const filters = [
     lead="Selected journal papers, conference papers, reviews, and book chapters from SICSL and its collaborators. Search by title or author, or filter by research area."
   />
   <div class="container-page py-12">
+    <nav class="mb-8 overflow-x-auto border-b border-slate-200" aria-label="Publication types">
+      <div class="flex min-w-max gap-7" role="tablist">
+        {
+          kindTabs.map((tab) => (
+            <button
+              type="button"
+              role="tab"
+              class={kindTab}
+              data-kind-filter={tab.key}
+              data-active={tab.key === "all" ? "" : undefined}
+              aria-selected={tab.key === "all" ? "true" : "false"}
+            >
+              {tab.label}
+              <span class="ml-1 text-xs opacity-60">({kindCounts[tab.key]})</span>
+            </button>
+          ))
+        }
+      </div>
+    </nav>
+
     <div class="mb-8 space-y-3">
       <button
         type="button"
@@ -110,6 +152,7 @@ const filters = [
     });
 
     const filterBtns = [...document.querySelectorAll<HTMLElement>("[data-filter]")];
+    const kindBtns = [...document.querySelectorAll<HTMLElement>("[data-kind-filter]")];
     const areaBtns = [...document.querySelectorAll<HTMLElement>("[data-area]")];
     const sortBtns = [...document.querySelectorAll<HTMLElement>("[data-sort]")];
 
@@ -121,6 +164,7 @@ const filters = [
       openaccess: "openaccess",
     };
     let filter = "all";
+    let kind = "all";
     let area = "all";
     let sort = "date";
 
@@ -151,9 +195,10 @@ const filters = [
       let n = 0;
       for (const li of items) {
         const okFilter = filter === "all" || li.dataset[FLAG[filter]] === "true";
+        const okKind = kind === "all" || li.dataset.kind === kind;
         const okArea = area === "all" || (li.dataset.areas ?? "").split(" ").includes(area);
         const okSearch = !q || (li.dataset.search ?? "").includes(q);
-        const show = okFilter && okArea && okSearch;
+        const show = okFilter && okKind && okArea && okSearch;
         li.hidden = !show;
         if (show) n++;
       }
@@ -172,6 +217,14 @@ const filters = [
       b.addEventListener("click", () => {
         filter = b.dataset.filter ?? "all";
         setActive(filterBtns, b);
+        applyFilter();
+      });
+    for (const b of kindBtns)
+      b.addEventListener("click", () => {
+        kind = b.dataset.kindFilter ?? "all";
+        setActive(kindBtns, b);
+        for (const x of kindBtns)
+          x.setAttribute("aria-selected", String(x === b));
         applyFilter();
       });
     for (const b of areaBtns)

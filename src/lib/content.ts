@@ -4,6 +4,15 @@ export type Person = CollectionEntry<"people">;
 export type Publication = CollectionEntry<"publications">;
 export type Figure = CollectionEntry<"figures">;
 
+export type PublicationKind = "journal" | "conference" | "book";
+
+/** Display category used by the Publications sub-tabs. */
+export function publicationKind(p: Publication): PublicationKind {
+  if (p.data.areas.includes("book-chapter")) return "book";
+  const venue = p.data.journal ?? "";
+  return /conference|symposium/i.test(venue) ? "conference" : "journal";
+}
+
 // Tag vocabulary (must match the `areas` enum in content.config.ts). A paper may
 // carry several — a topic/population, a method/approach, and a publication type.
 //

@@ -2,7 +2,13 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { Publication } from "../lib/content";
-import { authorIsPerson, personKey, menteeMatcher } from "../lib/content";
+import {
+  AREA_LABELS,
+  authorIsPerson,
+  personKey,
+  menteeMatcher,
+  publicationKind,
+} from "../lib/content";
 // Author markers: ** = mentee (derived from lab membership, see menteeMatcher)
 // and * = co-first/-senior author (from the CV, scripts/data, by DOI/title).
 import cvPubs from "../../scripts/data/cv-publications.json";
@@ -66,6 +72,23 @@ const labPeopleFor = (p: Publication) => {
 
 const shortName = (name: string) => name.split(",")[0].trim();
 const anyMarks = pubs.some((p) => starsFor(p).size > 0);
+
+const kindLabels = {
+  journal: "Journal",
+  conference: "Conference",
+  book: "Book Chapter",
+};
+
+const venueBadge = (venue = "") => {
+  const acronym = venue.match(/\(([A-Z][A-Z0-9.-]{1,12})\)/)?.[1];
+  if (acronym) return acronym;
+  if (/bioRxiv/i.test(venue)) return "bioRxiv";
+  if (/Journal of Solid-State Circuits/i.test(venue)) return "JSSC";
+  if (/Solid-State Circuits Letters/i.test(venue)) return "L-SSC";
+  if (/Open Journal of Solid-State Circuits/i.test(venue)) return "OJSSCS";
+  if (/Springer/i.test(venue)) return "Springer";
+  return "";
+};
 ---
 
 <ol class="divide-y divide-slate-100" id="pub-list">
@@ -78,6 +101,8 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
       const menteeLed = isMentee(d.authors[0] ?? "");
       const featured = menteeLed || (d.piFirstOrSenior && d.year >= 2019);
       const labPeople = labPeopleFor(p);
+      const kind = publicationKind(p);
+      const venue = venueBadge(d.journal);
       // Collaboration unless the PI is the SOLE first or SOLE last author —
       // co-first / co-last (he shares the lead) and middle authorship all count.
       const piAt = (a: string) => findPerson(a)?.slug === "woojun-choi";
@@ -96,16 +121,37 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
           data-pi-senior={d.piFirstOrSenior}
           data-collaboration={collaboration}
           data-openaccess={d.openAccess}
+          data-kind={kind}
           data-areas={d.areas.join(" ")}
           data-search={search}
         >
-          <p class="font-medium text-slate-900">
+          <div class="mb-2 flex flex-wrap items-center gap-2 text-xs">
+            <span class="text-base font-bold text-primary-700">{d.year}</span>
+            <span class="rounded-full border border-primary-200 bg-primary-50 px-2.5 py-0.5 font-semibold text-primary-700">
+              {kindLabels[kind]}
+            </span>
+            {venue && (
+              <span class="rounded-full border border-slate-200 bg-white px-2.5 py-0.5 font-semibold text-slate-700">
+                {venue}
+              </span>
+            )}
+            {d.areas
+              .filter((area) => area !== "review" && area !== "book-chapter")
+              .slice(0, 2)
+              .map((area) => (
+                <span class="rounded-full bg-accent-50 px-2.5 py-0.5 font-medium text-accent-700">
+                  {AREA_LABELS[area]}
+                </span>
+              ))}
+          </div>
+
+          <p class="font-semibold leading-snug text-primary-950">
             {link ? (
               <a
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="hover:text-primary-700 hover:underline"
+                class="hover:text-primary-700 hover:underline hover:underline-offset-2"
               >
                 {d.title}
               </a>
@@ -118,6 +164,7 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
             <span class:list={["authors", d.authors.length > 14 && "clamped"]}>
               {d.authors.map((a, i) => {
                 const person = findPerson(a);
+                const isPi = person?.slug === "woojun-choi";
                 // Only a co-first/-senior (*) marker. Mentees are conveyed by
                 // bolded name links + headshots, so they get no marker.
                 const mark = stars.has(a) ? "*" : "";
@@ -127,7 +174,12 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
                     {person ? (
                       <a
                         href={`/people/${person.slug}`}
-                        class="font-medium text-slate-900 hover:text-primary-700 hover:underline"
+                        class:list={[
+                          "font-semibold hover:text-primary-700",
+                          isPi
+                            ? "text-primary-700 underline decoration-primary-300 underline-offset-2"
+                            : "text-slate-900 hover:underline",
+                        ]}
                       >
                         {a}
                       </a>
@@ -151,10 +203,8 @@ const anyMarks = pubs.some((p) => starsFor(p).size > 0);
             )}
           </p>
 
-          <p class="mt-0.5 text-sm text-slate-600">
-            {d.journal && <em>{d.journal}</em>}
-            {d.journal && " · "}
-            {d.year}
+          <p class="mt-0.5 text-sm text-slate-700">
+            {d.journal}
           </p>
 
           {labPeople.length > 0 && (
