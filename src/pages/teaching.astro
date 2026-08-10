@@ -18,7 +18,7 @@ const khu = [
 <BaseLayout title="Teaching" description="Courses taught by Prof. Woojun Choi.">
   <PageHeader eyebrow="Education" title="Teaching" lead="Courses in circuit theory, analog integrated circuits, electronic circuits, and display IC systems." />
   <div class="container-page space-y-14 py-12">
-    <section>
+    <section class="w-full">
       <h2 class="font-serif text-2xl text-slate-900">Yonsei University</h2>
       <div class="mt-5 grid gap-5 md:grid-cols-3">
         {yonsei.map((semester) => (
@@ -31,7 +31,7 @@ const khu = [
         ))}
       </div>
     </section>
-    <section>
+    <section class="w-full">
       <h2 class="font-serif text-2xl text-slate-900">Kyung Hee University <span class="text-base font-normal text-slate-500">(2023.09–2025.02)</span></h2>
       <div class="mt-5 grid gap-5 md:grid-cols-3">
         {khu.map((semester) => (
