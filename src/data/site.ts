@@ -43,7 +43,6 @@ export const site: SiteConfig = {
   mapQuery: "Yonsei University Engineering Research Park, Seoul, Korea",
   social: {
     scholar: "https://scholar.google.com/citations?hl=en&user=jbET1VMAAAAJ&view_op=list_works&sortby=pubdate",
-    github: "https://github.com/sicsl-yonsei",
   },
   nav: [
     { label: "People", href: "/people" },
