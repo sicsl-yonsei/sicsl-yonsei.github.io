@@ -27,7 +27,7 @@ const linkClass = (href: string, mobile = false) => {
     class="container-page flex h-16 items-center justify-between"
     aria-label="Primary"
   >
-    <a href="/" class="group flex items-center gap-2.5">
+    <a href="/" class="group flex items-center" aria-label="SICSL home">
       <span class="relative h-10 w-[119px] shrink-0 overflow-hidden" aria-hidden="true">
         <img
           src="/sicsl-logo-original.png"
@@ -36,11 +36,6 @@ const linkClass = (href: string, mobile = false) => {
           height="2000"
           class="absolute -left-[62px] -top-[100px] h-[244px] w-[244px] max-w-none"
         />
-      </span>
-      <span
-        class="font-serif text-lg font-semibold text-slate-900 group-hover:text-primary-700"
-      >
-        {site.shortName}
       </span>
     </a>
 
