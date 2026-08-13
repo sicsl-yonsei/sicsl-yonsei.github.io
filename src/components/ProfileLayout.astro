@@ -223,14 +223,63 @@ const ICONS: Record<LinkType, { d: string; color?: string }> = {
     font-size: 0.875rem;
   }
 
-  .profile-prose :global(.faculty-contact) {
-    display: grid;
-    gap: 0.6rem;
-    margin-top: 0.9rem;
+  .profile-prose :global(.faculty-contact-list > li) {
+    margin-top: 0.85rem;
   }
 
-  .profile-prose :global(.faculty-contact p) {
+  .profile-prose :global(.faculty-contact-list > li::before) {
+    position: absolute;
+    top: 0.72rem;
+    left: 0;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 9999px;
+    background: #8ab9dc;
+    content: "";
+  }
+
+  .profile-prose :global(.faculty-contact-list p) {
     margin-top: 0;
+  }
+
+  .profile-prose :global(.faculty-contact-list li p + p) {
+    margin-top: 0.15rem;
+  }
+
+  .profile-prose :global(.faculty-contact-heading) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.6rem;
+  }
+
+  .profile-prose :global(.faculty-member-badge) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.45rem;
+    border: 1px solid #99d6df;
+    border-radius: 9999px;
+    background: #ecfeff;
+    padding: 0.1rem 0.55rem;
+    color: #0e7490;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.035em;
+    line-height: 1;
+  }
+
+  .profile-prose :global(.faculty-education-degree),
+  .profile-prose :global(.faculty-education-meta) {
+    display: block;
+  }
+
+  .profile-prose :global(.faculty-education-meta) {
+    margin-top: 0.12rem;
+  }
+
+  .profile-prose :global(.faculty-education-meta strong),
+  .profile-prose :global(.faculty-education-date) {
+    white-space: nowrap;
   }
 
   .profile-prose :global(h2) {

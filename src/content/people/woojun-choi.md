@@ -17,21 +17,34 @@ featured: true
 <div class="faculty-grid">
   <section class="faculty-card">
     <h2>Contact Information</h2>
-    <div class="faculty-contact">
-      <p><strong>Assistant Professor</strong><br />Department of Integrated Display Engineering</p>
-      <p>Yonsei University, Seoul, Korea<br /><strong>IEEE Member</strong></p>
-      <p><strong>Office</strong><br />+82-2-2123-5829<br />Room 150B-3, Engineering Research Park</p>
-      <p><strong>Email</strong><br /><a href="mailto:wjchoi11@yonsei.ac.kr">wjchoi11@yonsei.ac.kr</a></p>
-    </div>
+    <ul class="faculty-contact-list">
+      <li>
+        <p class="faculty-contact-heading"><strong>Assistant Professor</strong><span class="faculty-member-badge">IEEE Member</span></p>
+        <p>Department of Integrated Display Engineering<br />Yonsei University, Seoul, Korea</p>
+      </li>
+      <li>
+        <p><strong>Office</strong></p>
+        <p>+82-2-2123-5829<br />Room 150B-3, Engineering Research Park</p>
+      </li>
+      <li>
+        <p><strong>Email</strong></p>
+        <p><a href="mailto:wjchoi11@yonsei.ac.kr">wjchoi11@yonsei.ac.kr</a></p>
+      </li>
+    </ul>
   </section>
 
   <section class="faculty-card">
     <h2>Education</h2>
-    <ul>
-      <li>Ph.D. in Electrical and Electronic Engineering, <strong>Yonsei University</strong>, Seoul, Korea (2015.03–2021.02)
+    <ul class="faculty-education-list">
+      <li>
+        <span class="faculty-education-degree">Ph.D. in Electrical and Electronic Engineering</span>
+        <span class="faculty-education-meta"><strong>Yonsei University</strong> · Seoul, Korea <span class="faculty-education-date">(2015.03–2021.02)</span></span>
         <ul><li>Advisor: <a href="https://sites.google.com/site/ymsicl/pi">Prof. Youngcheol Chae</a></li></ul>
       </li>
-      <li>B.S. in Electrical and Electronic Engineering, <strong>Yonsei University</strong>, Seoul, Korea (2011.03–2015.02)</li>
+      <li>
+        <span class="faculty-education-degree">B.S. in Electrical and Electronic Engineering</span>
+        <span class="faculty-education-meta"><strong>Yonsei University</strong> · Seoul, Korea <span class="faculty-education-date">(2011.03–2015.02)</span></span>
+      </li>
     </ul>
   </section>
 
