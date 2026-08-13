@@ -28,7 +28,7 @@ IEEE Member
 - Assistant Professor, Department of Integrated Display Engineering, **Yonsei University**, Korea (2025.03–Present)
 - Assistant Professor, Department of Electronic Engineering, **Kyung Hee University**, Korea (2023.09–2025.02)
 - Postdoctoral Researcher, Department of Information Technology and Electrical Engineering, **ETH Zürich**, Switzerland (2021.08–2023.08)
-  - Advisor: [Prof. Taekwang Jang](https://circuit.ee.ethz.ch/people/prof_taekwang-jang.html)
+  - Advisor: [Prof. Taekwang Jang](https://circuit.ee.ethz.ch/people/person-detail.tjang.html)
 - Postdoctoral Researcher, Department of Electrical and Electronic Engineering, **Yonsei University**, Korea (2021.03–2021.07)
 - Visiting Scholar, Department of Electrical Engineering, Mathematics and Computer Science, **Delft University of Technology**, The Netherlands (2018.05–2018.08)
 
