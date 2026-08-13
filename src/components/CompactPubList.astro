@@ -57,9 +57,16 @@ const { pubs } = Astro.props;
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="hover:text-primary-700 hover:underline hover:underline-offset-2"
+                  aria-label={`${d.title} (opens in a new tab)`}
+                  class="group transition-colors hover:text-primary-700 hover:underline hover:decoration-primary-300 hover:underline-offset-4"
                 >
                   {d.title}
+                  <span
+                    aria-hidden="true"
+                    class="ml-1 inline-block text-[0.72em] font-medium text-primary-500 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  >
+                    ↗
+                  </span>
                 </a>
               ) : (
                 d.title

@@ -4,6 +4,7 @@ authors: ["D. Iselin", "K. Jeong", "T. Keller", "G. Cristiano", "K. Kim", "W. Ch
 year: 2026
 publicationDate: "2026-04"
 journal: "IEEE Custom Integrated Circuits Conference (CICC), April 2026"
+url: "https://ieeexplore.ieee.org/document/11509519/"
 piFirstOrSenior: false
 featured: true
 openAccess: false

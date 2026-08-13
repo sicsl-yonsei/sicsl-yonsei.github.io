@@ -4,6 +4,7 @@ authors: ["Y. Lee", "W. Choi", "T. Kim", "S. Song", "K. A. A. Makinwa", "Y. Chae
 year: 2019
 publicationDate: "2019-09"
 journal: "IEEE Solid-State Circuits Letters, vol. 2, no. 9, pp. 67–70, Sep. 2019"
+url: "https://ieeexplore.ieee.org/document/8902650/"
 piFirstOrSenior: false
 featured: true
 openAccess: false

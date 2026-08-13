@@ -4,6 +4,7 @@ authors: ["B. Park", "I. Park", "W. Choi", "Y. Na", "Y. Chae"]
 year: 2020
 publicationDate: "2020-11"
 journal: "IEEE Solid-State Circuits Letters, vol. 3, no. 11, pp. 422–425, Nov. 2020"
+url: "https://ieeexplore.ieee.org/document/9201527/"
 piFirstOrSenior: false
 featured: true
 openAccess: false

@@ -4,6 +4,7 @@ authors: ["W. Choi", "Y. Lee", "S. Kim", "S. Lee", "J. Jang", "J. Chun", "K. A. 
 year: 2018
 publicationDate: "2018-12"
 journal: "IEEE Journal of Solid-State Circuits, vol. 53, no. 12, pp. 3356–3367, Dec. 2018"
+url: "https://ieeexplore.ieee.org/document/8485756/"
 piFirstOrSenior: true
 featured: true
 openAccess: false

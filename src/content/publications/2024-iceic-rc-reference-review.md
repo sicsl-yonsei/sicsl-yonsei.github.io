@@ -4,6 +4,7 @@ authors: ["W. Choi"]
 year: 2024
 publicationDate: "2024-01"
 journal: "IEEE International Conference on Electronics, Information, and Communication (ICEIC), Jan. 2024"
+url: "https://ieeexplore.ieee.org/document/10457145/"
 piFirstOrSenior: true
 featured: false
 openAccess: false

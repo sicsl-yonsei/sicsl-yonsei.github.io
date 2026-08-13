@@ -6,6 +6,7 @@ contributionNote: "Equal contribution authorship"
 year: 2026
 publicationDate: "2026-06"
 journal: "IEEE Symposium on VLSI Technology and Circuits (VLSI), June 2026"
+url: "https://vlsi26.mapyourshow.com/8_0/sessions/session-details.cfm?ScheduleID=141"
 isMenteePaper: true
 menteeFirstAuthor: false
 piFirstOrSenior: false

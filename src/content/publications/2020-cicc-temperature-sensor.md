@@ -4,6 +4,7 @@ authors: ["S. Park", "Y. Kim", "W. Choi", "Y. Lee", "S. Kim", "Y. Shin", "Y. Cha
 year: 2020
 publicationDate: "2020-03"
 journal: "IEEE Custom Integrated Circuits Conference, Mar. 2020"
+url: "https://ieeexplore.ieee.org/document/9075873/"
 piFirstOrSenior: false
 featured: true
 openAccess: false

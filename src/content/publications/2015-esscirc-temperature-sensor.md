@@ -4,6 +4,7 @@ authors: ["Y. Kim", "W. Choi", "J. Kim", "S. Lee", "S. Lee", "H. Kim", "K. A. A.
 year: 2015
 publicationDate: "2015-09"
 journal: "IEEE European Solid-State Circuits Conference, pp. 267–270, Sep. 2015"
+url: "https://ieeexplore.ieee.org/document/7313878/"
 piFirstOrSenior: false
 featured: true
 openAccess: false

@@ -6,6 +6,7 @@ contributionNote: "Co-first authorship"
 year: 2023
 publicationDate: "2023-06"
 journal: "IEEE Symposium on VLSI Technology and Circuits (VLSI), June 2023"
+url: "https://ieeexplore.ieee.org/document/10185425/"
 piFirstOrSenior: true
 featured: true
 openAccess: false

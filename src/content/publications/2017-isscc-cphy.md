@@ -4,6 +4,7 @@ authors: ["W. Choi", "T. Kim", "J. Shim", "H. Kim", "G. Han", "Y. Chae"]
 year: 2017
 publicationDate: "2017-02"
 journal: "IEEE International Solid-State Circuits Conference, pp. 402–403, Feb. 2017"
+url: "https://ieeexplore.ieee.org/document/7870431/"
 piFirstOrSenior: true
 featured: true
 openAccess: false
