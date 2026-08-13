@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import ProfileLayout from "../../components/ProfileLayout.astro";
-import PubList from "../../components/PubList.astro";
+import CompactPubList from "../../components/CompactPubList.astro";
 import { getPublications, publicationsForPerson } from "../../lib/content";
 
 export async function getStaticPaths() {
@@ -14,7 +14,7 @@ const { Content } = await render(person);
 const hasBio = (person.body ?? "").trim().length > 0;
 
 const pubs = await getPublications();
-const mine = publicationsForPerson(person, pubs).slice(0, 15);
+const mine = publicationsForPerson(person, pubs).slice(0, 8);
 ---
 
 <ProfileLayout person={person}>
@@ -28,11 +28,25 @@ const mine = publicationsForPerson(person, pubs).slice(0, 15);
 
   {
     mine.length > 0 && (
-      <section class:list={[hasBio && "mt-10"]}>
-        <h2 class="mb-1 font-serif text-xl text-slate-900">
-          Selected publications
-        </h2>
-        <PubList pubs={mine} />
+      <section class:list={["border-t border-slate-200 pt-10", hasBio && "mt-12"]}>
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p class="text-xs font-semibold tracking-[0.16em] text-accent-600 uppercase">
+              Research output
+            </p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
+              Selected publications
+            </h2>
+          </div>
+          <a
+            href="/publications"
+            class="group inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-accent-600"
+          >
+            View all publications
+            <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+        </div>
+        <CompactPubList pubs={mine} />
       </section>
     )
   }

@@ -12,36 +12,50 @@ order: 1
 featured: true
 ---
 
-Prof. Woojun Choi leads the Smart Interface IC and Systems Laboratory at Yonsei University. His research focuses on high-performance analog and mixed-signal CMOS circuits for display IC systems, energy-efficient sensor interfaces, data converters, miniaturized sensor platforms, and intelligent biomedical systems.
+<p class="faculty-intro">Prof. Woojun Choi leads the Smart Interface IC and Systems Laboratory at Yonsei University. His research focuses on high-performance analog and mixed-signal CMOS circuits for display IC systems, energy-efficient sensor interfaces, data converters, miniaturized sensor platforms, and intelligent biomedical systems.</p>
 
-## Contact Information
+<div class="faculty-grid">
+  <section class="faculty-card">
+    <h2>Contact Information</h2>
+    <div class="faculty-contact">
+      <p><strong>Assistant Professor</strong><br />Department of Integrated Display Engineering</p>
+      <p><strong>Yonsei University</strong>, Seoul, Korea<br />IEEE Member</p>
+      <p><strong>Office</strong><br />+82-2-2123-5829<br />Room 150B-3, Engineering Research Park</p>
+      <p><strong>Email</strong><br /><a href="mailto:wjchoi11@yonsei.ac.kr">wjchoi11@yonsei.ac.kr</a></p>
+    </div>
+  </section>
 
-**Assistant Professor**, Department of Integrated Display Engineering  
-**Yonsei University**, Seoul, Korea  
-IEEE Member
+  <section class="faculty-card">
+    <h2>Education</h2>
+    <ul>
+      <li>Ph.D. in Electrical and Electronic Engineering, <strong>Yonsei University</strong>, Seoul, Korea (2015.03–2021.02)
+        <ul><li>Advisor: <a href="https://sites.google.com/site/ymsicl/pi">Prof. Youngcheol Chae</a></li></ul>
+      </li>
+      <li>B.S. in Electrical and Electronic Engineering, <strong>Yonsei University</strong>, Seoul, Korea (2011.03–2015.02)</li>
+    </ul>
+  </section>
 
-- **Office:** +82-2-2123-5829 (Room 150B-3, Engineering Research Park)
-- **Email:** [wjchoi11@yonsei.ac.kr](mailto:wjchoi11@yonsei.ac.kr)
+  <section class="faculty-card faculty-card-wide">
+    <h2>Experience</h2>
+    <ul>
+      <li>Assistant Professor, Department of Integrated Display Engineering, <strong>Yonsei University</strong>, Korea (2025.03–Present)</li>
+      <li>Assistant Professor, Department of Electronic Engineering, <strong>Kyung Hee University</strong>, Korea (2023.09–2025.02)</li>
+      <li>Postdoctoral Researcher, Department of Information Technology and Electrical Engineering, <strong>ETH Zürich</strong>, Switzerland (2021.08–2023.08)
+        <ul><li>Advisor: <a href="https://circuit.ee.ethz.ch/people/person-detail.tjang.html">Prof. Taekwang Jang</a></li></ul>
+      </li>
+      <li>Postdoctoral Researcher, Department of Electrical and Electronic Engineering, <strong>Yonsei University</strong>, Korea (2021.03–2021.07)</li>
+      <li>Visiting Scholar, Department of Electrical Engineering, Mathematics and Computer Science, <strong>Delft University of Technology</strong>, The Netherlands (2018.05–2018.08)</li>
+    </ul>
+  </section>
 
-## Experience
-
-- Assistant Professor, Department of Integrated Display Engineering, **Yonsei University**, Korea (2025.03–Present)
-- Assistant Professor, Department of Electronic Engineering, **Kyung Hee University**, Korea (2023.09–2025.02)
-- Postdoctoral Researcher, Department of Information Technology and Electrical Engineering, **ETH Zürich**, Switzerland (2021.08–2023.08)
-  - Advisor: [Prof. Taekwang Jang](https://circuit.ee.ethz.ch/people/person-detail.tjang.html)
-- Postdoctoral Researcher, Department of Electrical and Electronic Engineering, **Yonsei University**, Korea (2021.03–2021.07)
-- Visiting Scholar, Department of Electrical Engineering, Mathematics and Computer Science, **Delft University of Technology**, The Netherlands (2018.05–2018.08)
-
-## Education
-
-- Ph.D. in Electrical and Electronic Engineering, **Yonsei University**, Seoul, Korea (2015.03–2021.02)
-  - Advisor: [Prof. Youngcheol Chae](https://sites.google.com/site/ymsicl/pi)
-- B.S. in Electrical and Electronic Engineering, **Yonsei University**, Seoul, Korea (2011.03–2015.02)
-
-## Honors and Awards
-
-- Postdoctoral Fellowship, National Research Foundation of Korea (NRF) (2022.09–2023.08)
-- International Solid-State Circuits Conference (ISSCC) 2021 Takuo Sugano Award for Outstanding Far-East Paper, IEEE ISSCC (2021.02) <span class="award-highlight">The Best ISSCC Paper Award for the Far-East Region</span>
-- Solid-State Circuits Society (SSCS) Predoctoral Achievement Award, IEEE SSCS (2019.02)
-- Best Patent Award (Silver Prize), SK Hynix (2017)
-- Global Ph.D. Fellowship, NRF (2016.03–2021.02)
+  <section class="faculty-card faculty-card-wide">
+    <h2>Honors and Awards</h2>
+    <ul>
+      <li>Postdoctoral Fellowship, National Research Foundation of Korea (NRF) (2022.09–2023.08)</li>
+      <li>International Solid-State Circuits Conference (ISSCC) 2021 Takuo Sugano Award for Outstanding Far-East Paper, IEEE ISSCC (2021.02) <span class="award-highlight">The Best ISSCC Paper Award for the Far-East Region</span></li>
+      <li>Solid-State Circuits Society (SSCS) Predoctoral Achievement Award, IEEE SSCS (2019.02)</li>
+      <li>Best Patent Award (Silver Prize), SK Hynix (2017)</li>
+      <li>Global Ph.D. Fellowship, NRF (2016.03–2021.02)</li>
+    </ul>
+  </section>
+</div>
