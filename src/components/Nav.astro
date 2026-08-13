@@ -28,13 +28,15 @@ const linkClass = (href: string, mobile = false) => {
     aria-label="Primary"
   >
     <a href="/" class="group flex items-center gap-2.5">
-      <img
-        src="/sicsl-logo-symbol.png"
-        alt=""
-        width="40"
-        height="40"
-        class="h-10 w-10 object-contain"
-      />
+      <span class="relative h-10 w-10 shrink-0 overflow-hidden" aria-hidden="true">
+        <img
+          src="/sicsl-logo-original.png"
+          alt=""
+          width="2000"
+          height="2000"
+          class="absolute -left-[62px] -top-[100px] h-[244px] w-[244px] max-w-none"
+        />
+      </span>
       <span
         class="font-serif text-lg font-semibold text-slate-900 group-hover:text-primary-700"
       >
