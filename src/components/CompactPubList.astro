@@ -1,5 +1,10 @@
 ---
-import type { Publication } from "../lib/content";
+import { publicationKind, type Publication } from "../lib/content";
+import {
+  conferenceTier,
+  journalTier,
+  venueBadge,
+} from "../lib/publicationLabels";
 
 interface Props {
   pubs: Publication[];
@@ -7,17 +12,6 @@ interface Props {
 
 const { pubs } = Astro.props;
 
-const venueBadge = (venue = "") => {
-  const acronym = venue.match(/\(([A-Z][A-Z0-9.-]{1,12})\)/)?.[1];
-  if (acronym) return acronym;
-  if (/bioRxiv/i.test(venue)) return "bioRxiv";
-  if (/Journal of Solid-State Circuits/i.test(venue)) return "JSSC";
-  if (/Transactions on Circuits and Systems I/i.test(venue)) return "TCAS-I";
-  if (/Transactions on Circuits and Systems II/i.test(venue)) return "TCAS-II";
-  if (/Solid-State Circuits Letters/i.test(venue)) return "L-SSC";
-  if (/Open Journal of Solid-State Circuits/i.test(venue)) return "OJSSCS";
-  return "";
-};
 ---
 
 <ol class="divide-y divide-slate-200 overflow-hidden rounded-xl border border-slate-200 bg-white">
@@ -26,11 +20,30 @@ const venueBadge = (venue = "") => {
       const d = p.data;
       const link = d.doi ? `https://doi.org/${d.doi}` : d.url;
       const venue = venueBadge(d.journal);
+      const kind = publicationKind(p);
+      const tier =
+        kind === "conference"
+          ? conferenceTier(d.journal)
+          : kind === "journal"
+            ? journalTier(d.journal)
+            : "";
 
       return (
         <li class="grid gap-2 px-4 py-3 sm:grid-cols-[4.5rem_1fr] sm:gap-4 sm:px-5">
-          <div class="flex items-center gap-2 sm:block">
+          <div class="flex flex-wrap items-center gap-1.5 sm:block">
             <span class="text-sm font-bold text-primary-700">{d.year}</span>
+            {tier && (
+              <span
+                class:list={[
+                  "rounded-full border px-2 py-0.5 text-[0.7rem] font-bold sm:mt-1 sm:block sm:w-fit",
+                  tier === "Top-tier"
+                    ? "border-amber-200 bg-amber-100 text-amber-800"
+                    : "border-indigo-200 bg-indigo-50 text-indigo-700",
+                ]}
+              >
+                {tier}
+              </span>
+            )}
             {venue && (
               <span class="rounded-full bg-primary-50 px-2 py-0.5 text-[0.7rem] font-semibold text-primary-700 sm:mt-1 sm:block sm:w-fit">
                 {venue}
