@@ -19,7 +19,7 @@ featured: true
     <h2>Contact Information</h2>
     <div class="faculty-contact">
       <p><strong>Assistant Professor</strong><br />Department of Integrated Display Engineering</p>
-      <p><strong>Yonsei University</strong>, Seoul, Korea<br />IEEE Member</p>
+      <p>Yonsei University, Seoul, Korea<br /><strong>IEEE Member</strong></p>
       <p><strong>Office</strong><br />+82-2-2123-5829<br />Room 150B-3, Engineering Research Park</p>
       <p><strong>Email</strong><br /><a href="mailto:wjchoi11@yonsei.ac.kr">wjchoi11@yonsei.ac.kr</a></p>
     </div>
