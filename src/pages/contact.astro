@@ -91,23 +91,24 @@ const socials = [
     </div>
 
     <section class="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div class="grid lg:grid-cols-[0.78fr_1.5fr]">
-        <div class="bg-primary-950 p-7 text-white sm:p-9">
-          <p class="text-xs font-bold tracking-[0.18em] text-cyan-300 uppercase">
+      <div class="grid lg:grid-cols-[minmax(230px,0.56fr)_1.55fr]">
+        <div class="relative flex flex-col justify-center overflow-hidden border-b border-slate-200 bg-gradient-to-br from-primary-50 via-white to-cyan-50 p-6 sm:p-7 lg:border-r lg:border-b-0">
+          <div class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-primary-700 to-cyan-400 lg:h-full lg:w-1"></div>
+          <p class="text-[0.68rem] font-bold tracking-[0.16em] text-accent-700 uppercase">
             Graduate Student Recruitment
           </p>
-          <h2 class="mt-4 font-serif text-3xl leading-tight">
-            We are looking for passionate researchers.
+          <h2 class="mt-3 text-2xl font-bold tracking-tight text-primary-950 sm:text-[1.7rem]">
+            Join SICSL.
           </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-300">
-            Applications and brief inquiries about M.S. and Ph.D. opportunities are welcome.
+          <p class="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
+            We welcome passionate researchers interested in M.S. and Ph.D. opportunities.
           </p>
           <a
             href={`mailto:${site.email}`}
-            class="mt-7 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-primary-950 transition hover:bg-cyan-50"
+            class="group mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-primary-950 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-primary-800"
           >
             Contact us
-            <span aria-hidden="true">&rarr;</span>
+            <span class="transition-transform group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
