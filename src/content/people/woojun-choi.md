@@ -4,6 +4,7 @@ status: current
 group: Faculty
 role: "Principal Investigator"
 title: "Assistant Professor, Department of Integrated Display Engineering"
+membership: "IEEE Member"
 headshot: "../../assets/people/woojun-choi.webp"
 links:
   email: wjchoi11@yonsei.ac.kr
@@ -19,12 +20,12 @@ featured: true
     <h2>Contact Information</h2>
     <ul class="faculty-contact-list">
       <li>
-        <p class="faculty-contact-heading"><strong>Assistant Professor</strong><span class="faculty-member-badge">IEEE Member</span></p>
-        <p>Department of Integrated Display Engineering<br />Yonsei University, Seoul, Korea</p>
+        <p><strong>Address</strong></p>
+        <p>Room 150B-3, Engineering Research Park, Yonsei University, Seoul, Korea</p>
       </li>
       <li>
-        <p><strong>Office</strong></p>
-        <p>+82-2-2123-5829<br />Room 150B-3, Engineering Research Park</p>
+        <p><strong>Tel</strong></p>
+        <p><a href="tel:+82221235829">+82-2-2123-5829</a></p>
       </li>
       <li>
         <p><strong>Email</strong></p>

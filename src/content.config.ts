@@ -28,6 +28,7 @@ const people = defineCollection({
       ]),
       role: z.string(),
       title: z.string().optional(),
+      membership: z.string().optional(),
       headshot: image().optional(),
       links: z
         .object({

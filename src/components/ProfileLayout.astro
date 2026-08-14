@@ -7,7 +7,7 @@ interface Props {
   person: Person;
 }
 const { person } = Astro.props;
-const { name, role, title, headshot, links } = person.data;
+const { name, role, title, membership, headshot, links } = person.data;
 
 const initials = name
   .split(",")[0]
@@ -93,7 +93,16 @@ const ICONS: Record<LinkType, { d: string; color?: string }> = {
           </p>
           <div class="mt-4 h-0.5 w-12 rounded-full bg-accent-500"></div>
           <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">{name}</h1>
-          <p class="mt-3 whitespace-pre-line text-lg font-semibold text-primary-700">{role}</p>
+          <div class="mt-3 flex flex-wrap items-center gap-2.5">
+            <p class="whitespace-pre-line text-lg font-semibold text-primary-700">{role}</p>
+            {
+              membership && (
+                <span class="inline-flex min-h-6 items-center rounded-full border border-cyan-300 bg-cyan-50 px-2.5 py-1 text-xs font-bold tracking-[0.035em] text-cyan-700">
+                  {membership}
+                </span>
+              )
+            }
+          </div>
           {title && <p class="mt-1 max-w-2xl leading-relaxed text-slate-600">{title}</p>}
           {
             linkItems.length > 0 && (
@@ -244,28 +253,6 @@ const ICONS: Record<LinkType, { d: string; color?: string }> = {
 
   .profile-prose :global(.faculty-contact-list li p + p) {
     margin-top: 0.15rem;
-  }
-
-  .profile-prose :global(.faculty-contact-heading) {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.45rem 0.6rem;
-  }
-
-  .profile-prose :global(.faculty-member-badge) {
-    display: inline-flex;
-    align-items: center;
-    min-height: 1.45rem;
-    border: 1px solid #99d6df;
-    border-radius: 9999px;
-    background: #ecfeff;
-    padding: 0.1rem 0.55rem;
-    color: #0e7490;
-    font-size: 0.72rem;
-    font-weight: 750;
-    letter-spacing: 0.035em;
-    line-height: 1;
   }
 
   .profile-prose :global(.faculty-education-degree),
