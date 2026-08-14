@@ -5,6 +5,23 @@ import PersonGroup from "../../components/PersonGroup.astro";
 import { getGroupedPeople } from "../../lib/content";
 
 const groups = await getGroupedPeople();
+const studentGroup = groups.find((g) => g.group === "Students");
+const studentSubgroups = studentGroup
+  ? [
+      {
+        title: "Ph.D. Students",
+        people: studentGroup.people.filter((p) => p.data.role.startsWith("Ph.D.")),
+      },
+      {
+        title: "M.S. Students",
+        people: studentGroup.people.filter((p) => p.data.role.startsWith("M.S.")),
+      },
+      {
+        title: "Undergraduate Interns",
+        people: studentGroup.people.filter((p) => p.data.role.includes("Undergraduate")),
+      },
+    ].filter((g) => g.people.length > 0)
+  : [];
 ---
 
 <BaseLayout
@@ -18,6 +35,21 @@ const groups = await getGroupedPeople();
     wide
   />
   <div class="container-page py-12">
-    {groups.map((g) => <PersonGroup title={g.group} people={g.people} />)}
+    {
+      groups.map((g) =>
+        g.group === "Students" ? (
+          <section class="mb-14 w-full">
+            <h2 class="mb-8 w-full border-b border-slate-200 pb-2 font-serif text-2xl font-bold text-slate-900">
+              Students
+            </h2>
+            {studentSubgroups.map((subgroup) => (
+              <PersonGroup title={subgroup.title} people={subgroup.people} subgroup />
+            ))}
+          </section>
+        ) : (
+          <PersonGroup title={g.group} people={g.people} />
+        ),
+      )
+    }
   </div>
 </BaseLayout>
