@@ -31,17 +31,17 @@ const themes = [
 ];
 
 const news = [
-  { date: "2026.08", text: "Two of our papers on a compact BJT-based temperature sensor and a high-frame-rate SPAD dToF LiDAR sensor were accepted to IEEE A-SSCC 2026.", color: "text-red-700" },
-  { date: "2026.07", text: "Chaemin joins SICSL at Yonsei. Welcome!" },
-  { date: "2026.04", text: "Yunseong joins SICSL at Yonsei. Welcome!" },
-  { date: "2026.03", text: "Our work on a noise-efficient in-vitro and in-vivo capacitive neural interface was accepted to IEEE Symposium on VLSI Technology and Circuits.", color: "text-red-700"},
-  { date: "2026.02", text: "Kyunghyun joins SICSL at Yonsei. Welcome!" },
-  { date: "2026.01", text: "Our collaborative work on analog in-memory computing was accepted to IEEE CICC.", color: "text-red-700"},
-  { date: "2026.01", text: "Ain joins SICSL at Yonsei. Welcome!" },
-  { date: "2025.11", text: "Our paper on energy-efficient and temperature-resilient sensor interfaces was accepted to IEEE OJSSCS.", color: "text-red-700"},
-  { date: "2025.08", text: "Suho joins SICSL at Yonsei. Welcome!" },
-  { date: "2025.05", text: "Sun-Woong joins SICSL at Yonsei. Welcome!" },
-  { date: "2025.03", text: "Jihoon joins SICSL at Yonsei. Welcome!" },
+  { date: "2026.08", text: "Two of our papers on a compact BJT-based temperature sensor and a high-frame-rate SPAD dToF LiDAR sensor were accepted to the 2026 IEEE Asian Solid-State Circuits Conference.", kind: "publication" },
+  { date: "2026.07", text: "Chaemin joins SICSL at Yonsei. Welcome!", kind: "people" },
+  { date: "2026.04", text: "Yunseong joins SICSL at Yonsei. Welcome!", kind: "people" },
+  { date: "2026.03", text: "Our work on a noise-efficient in-vitro and in-vivo capacitive neural interface was accepted to the IEEE Symposium on VLSI Technology and Circuits.", kind: "publication" },
+  { date: "2026.02", text: "Kyunghyun joins SICSL at Yonsei. Welcome!", kind: "people" },
+  { date: "2026.01", text: "Our collaborative work on analog in-memory computing was accepted to the IEEE Custom Integrated Circuits Conference.", kind: "publication" },
+  { date: "2026.01", text: "Ain joins SICSL at Yonsei. Welcome!", kind: "people" },
+  { date: "2025.11", text: "Our paper on energy-efficient and temperature-resilient sensor interfaces was accepted to the IEEE Open Journal of the Solid-State Circuits Society.", kind: "publication" },
+  { date: "2025.08", text: "Suho joins SICSL at Yonsei. Welcome!", kind: "people" },
+  { date: "2025.05", text: "Sun-Woong joins SICSL at Yonsei. Welcome!", kind: "people" },
+  { date: "2025.03", text: "Jihoon joins SICSL at Yonsei. Welcome!", kind: "people" },
 ];
 ---
 
@@ -108,18 +108,28 @@ const news = [
     </div>
   </section>
 
-  <section class="border-y border-slate-200 bg-white">
-    <div class="container-page grid gap-12 py-16 lg:grid-cols-[1fr_1.4fr]">
-      <div>
+  <section class="border-y border-slate-200 bg-slate-50/70">
+    <div class="container-page py-16">
+      <div class="mb-8">
         <div class="mb-3 h-0.5 w-10 rounded-full bg-accent-500"></div>
         <h2 class="font-serif text-3xl text-slate-900">News</h2>
-        <p class="mt-3 max-w-md text-slate-600">Recent publications, new members, and updates from SICSL.</p>
       </div>
-      <ol class="divide-y divide-slate-200 border-t border-slate-300">
+      <ol class="grid gap-3">
         {news.map((item) => (
-          <li class="grid gap-2 py-4 sm:grid-cols-[5rem_1fr]">
-            <time class="text-sm font-semibold text-primary-700">{item.date}</time>
-            <p class:list={["text-sm leading-relaxed",item.color ?? "text-slate-700",]}>{item.text}</p>
+          <li class="grid gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition hover:border-primary-200 hover:shadow-md sm:grid-cols-[5.5rem_6.5rem_1fr] sm:items-start">
+            <time class="w-fit rounded-full bg-primary-50 px-3 py-1 text-xs font-bold tracking-wide text-primary-700">{item.date}</time>
+            <span class:list={[
+              "w-fit pt-1 text-[0.7rem] font-bold tracking-[0.12em] uppercase",
+              item.kind === "publication" ? "text-accent-700" : "text-slate-500",
+            ]}>
+              {item.kind === "publication" ? "Publication" : "People"}
+            </span>
+            <p class:list={[
+              "text-sm leading-relaxed",
+              item.kind === "publication" ? "font-semibold text-slate-900" : "text-slate-700",
+            ]}>
+              {item.text}
+            </p>
           </li>
         ))}
       </ol>
