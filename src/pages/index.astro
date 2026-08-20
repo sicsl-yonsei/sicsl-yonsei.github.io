@@ -103,14 +103,8 @@ const news = [
       </div>
       <ol class="grid gap-3">
         {news.map((item) => (
-          <li class="grid gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition hover:border-primary-200 hover:shadow-md sm:grid-cols-[5.5rem_6.5rem_1fr] sm:items-start">
+          <li class="grid gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition hover:border-primary-200 hover:shadow-md sm:grid-cols-[5.5rem_1fr] sm:items-start">
             <time class="w-fit rounded-full bg-primary-50 px-3 py-1 text-xs font-bold tracking-wide text-primary-700">{item.date}</time>
-            <span class:list={[
-              "w-fit pt-1 text-[0.7rem] font-bold tracking-[0.12em] uppercase",
-              item.kind === "publication" ? "text-accent-700" : "text-slate-500",
-            ]}>
-              {item.kind === "publication" ? "Publication" : "People"}
-            </span>
             <p class:list={[
               "text-sm leading-relaxed",
               item.kind === "publication" ? "font-semibold text-red-700" : "text-slate-700",
