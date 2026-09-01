@@ -47,11 +47,11 @@ const news = [
 
 <BaseLayout>
   <section
-    class="relative overflow-hidden border-b border-slate-800 bg-[#041326] bg-[url('/images/hero-interface-ic.webp')] bg-[length:auto_72%] bg-[position:74%_center] bg-no-repeat text-white sm:bg-[length:auto_90%] sm:bg-[position:right_center]"
+    class="relative overflow-hidden border-b border-slate-800 bg-[#041326] bg-[url('/images/hero-interface-ic.webp')] bg-cover bg-center bg-no-repeat text-white"
   >
     <div
       class="absolute inset-0"
-      style="background: linear-gradient(90deg, rgba(2, 12, 27, 0.34) 0%, rgba(2, 12, 27, 0.16) 46%, rgba(2, 12, 27, 0.03) 72%, transparent 100%);"
+      style="background: linear-gradient(90deg, rgba(2, 12, 27, 0.62) 0%, rgba(2, 12, 27, 0.5) 48%, rgba(2, 12, 27, 0.2) 72%, rgba(2, 12, 27, 0.05) 100%);"
       aria-hidden="true"
     ></div>
     <div class="container-page relative py-12 sm:py-16">
@@ -62,7 +62,12 @@ const news = [
         Smart Interface IC<br class="hidden sm:block" /> and Systems Laboratory
       </h1>
       <p class="mt-6 max-w-5xl text-lg leading-relaxed text-slate-200 sm:text-xl">
-        {site.description}
+        <span class="sm:hidden">{site.description}</span>
+        <span class="hidden sm:block">
+          <span class="block">We design high-performance analog and mixed-signal CMOS circuits for next-generation</span>
+          <span class="block">display IC systems, energy-efficient sensor interfaces, data converters,</span>
+          <span class="block">miniaturized sensor platforms, and intelligent biomedical systems.</span>
+        </span>
       </p>
       <div class="mt-7 flex flex-wrap gap-3">
         <a href="/research" class="rounded-md bg-white px-5 py-3 text-sm font-semibold text-primary-950 transition hover:bg-slate-100">Explore our research</a>
