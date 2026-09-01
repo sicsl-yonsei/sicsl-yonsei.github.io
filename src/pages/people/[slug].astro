@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import ProfileLayout from "../../components/ProfileLayout.astro";
-import CompactPubList from "../../components/CompactPubList.astro";
+import PubList from "../../components/PubList.astro";
 import { getPublications, publicationsForPerson } from "../../lib/content";
 
 export async function getStaticPaths() {
@@ -14,7 +14,7 @@ const { Content } = await render(person);
 const hasBio = (person.body ?? "").trim().length > 0;
 
 const pubs = await getPublications();
-const mine = publicationsForPerson(person, pubs).slice(0, 8);
+const mine = publicationsForPerson(person, pubs);
 ---
 
 <ProfileLayout person={person}>
@@ -35,7 +35,7 @@ const mine = publicationsForPerson(person, pubs).slice(0, 8);
               Research output
             </p>
             <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-              Selected publications
+              Publications
             </h2>
           </div>
           <a
@@ -46,7 +46,7 @@ const mine = publicationsForPerson(person, pubs).slice(0, 8);
             <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
           </a>
         </div>
-        <CompactPubList pubs={mine} />
+        <PubList pubs={mine} />
       </section>
     )
   }
